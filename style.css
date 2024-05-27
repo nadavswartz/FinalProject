@@ -39,46 +39,65 @@ header {
     transition: all .6s;
 }
 
-.logo {
+.menu {
+    position: absolute;
+    left: 0;
     font-size: 33px;
     font-weight: 800;
-    text-transform: uppercase;
     color: var(--text-color);
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .navlist {
     display: flex;
 }
 
-.navlist a {
+.navlist button {
     display: inline-block;
     margin: 0 30px;
     font-size: var(--p-font);
     font-weight: 500;
     color: var(--text-color);
     transition: all .6s;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
-.navlist a:hover {
+.navlist button:hover {
     transform: translateY(-4px);
     color: var(--second-color);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .nav-right {
+    position: absolute;
+    right: 0;
     display: flex;
     align-items: center;
 }
 
-.nav-right a {
+.nav-right button {
     display: inline-block;
     font-size: 22px;
     color: var(--text-color);
     margin: 0 20px;
     transition: all .6s;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
-.nav-right a:hover {
+.nav-right button:hover {
     transform: translateY(-4px) scale(1.1);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 #menu-icon {
@@ -88,4 +107,13 @@ header {
     margin-left: 10px;
     cursor: pointer;
     display: none;
+}
+
+.logo {
+    position: relative;
+    font-size: 35px;
+    color: var(--text-color);
+    font-weight: 800;
+    left: 42%;
+    text-decoration: none;
 }
