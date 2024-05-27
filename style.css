@@ -1,3 +1,4 @@
+/* Base styles */
 * {
     padding: 0;
     margin: 0;
@@ -28,7 +29,7 @@ header {
     position: fixed;
     top: 0;
     right: 0;
-    width: 100%;
+    left: 0; /* Ensure full width */
     z-index: 1000;
     background: var(--bg-color);
     box-shadow: 0 1px 6px 0 rgb(32 33 36 / 5%);
@@ -53,10 +54,10 @@ header {
 
 .navlist {
     display: flex;
+    align-items: center; /* Align items vertically */
 }
 
 .navlist button {
-    display: inline-block;
     margin: 0 30px;
     font-size: var(--p-font);
     font-weight: 500;
@@ -70,9 +71,6 @@ header {
 .navlist button:hover {
     transform: translateY(-4px);
     color: var(--second-color);
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
 }
 
 .nav-right {
@@ -83,7 +81,6 @@ header {
 }
 
 .nav-right button {
-    display: inline-block;
     font-size: 22px;
     color: var(--text-color);
     margin: 0 20px;
@@ -95,25 +92,29 @@ header {
 
 .nav-right button:hover {
     transform: translateY(-4px) scale(1.1);
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-#menu-icon {
-    font-size: 35px;
-    color: var(--text-color);
-    z-index: 10001;
-    margin-left: 10px;
-    cursor: pointer;
-    display: none;
 }
 
 .logo {
-    position: relative;
+    right: 50%;
+    position: absolute;
     font-size: 35px;
     color: var(--text-color);
     font-weight: 800;
-    left: 42%;
     text-decoration: none;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .logo {
+        flex: 1; /* Allow logo to grow */
+        text-align: center; /* Center the logo */
+    }
+
+    .navlist {
+        display: none; /* Hide navlist on smaller screens */
+    }
+
+    .nav-right {
+        margin-right: 10px; /* Add margin to the right */
+    }
 }
