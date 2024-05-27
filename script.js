@@ -1,5 +1,9 @@
 // Global veribals
 
+const user = document.getElementById("user");
+const login = document.getElementById("login");
+
+const cheerio = require('cheerio');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -50,6 +54,10 @@ server.listen(port, (error) => {
 
 // Nadav's S. Code
 
+
+user.addEventListener('click', () => {
+    login.classList.remove("hide");
+})
 
 
 // Nadav's C. Code

@@ -103,6 +103,10 @@ header {
     text-decoration: none;
 }
 
+.hide {
+    display: none;
+}
+
 /* Responsive styles */
 @media screen and (max-width: 768px) {
     .logo {
