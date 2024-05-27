@@ -1,9 +1,3 @@
-// Global veribals
-
-const user = document.getElementById("user");
-const login = document.getElementById("login");
-
-const cheerio = require('cheerio');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -13,7 +7,7 @@ const server = http.createServer((req, res) => {
     if (req.url === '/') {
         // Serve HTML file
         res.writeHead(200, {'Content-Type': 'text/html'});
-        fs.readFile('home.html', (error, data) => {
+        fs.readFile(path.join(__dirname, 'public', 'home.html'), (error, data) => {
             if (error) {
                 res.writeHead(404);
                 res.write('File not found');
@@ -24,7 +18,7 @@ const server = http.createServer((req, res) => {
         });
     } else if (req.url.endsWith('.css')) {
         // Serve CSS file
-        const cssPath = path.join(__dirname, req.url);
+        const cssPath = path.join(__dirname, 'public', req.url);
         fs.readFile(cssPath, (error, data) => {
             if (error) {
                 res.writeHead(404);
@@ -35,8 +29,21 @@ const server = http.createServer((req, res) => {
             }
             res.end();
         });
+    } else if (req.url.endsWith('.js')) {
+        // Serve JavaScript file
+        const jsPath = path.join(__dirname, 'public', req.url);
+        fs.readFile(jsPath, (error, data) => {
+            if (error) {
+                res.writeHead(404);
+                res.write('File not found');
+            } else {
+                res.writeHead(200, {'Content-Type': 'text/javascript'});
+                res.write(data);
+            }
+            res.end();
+        });
     } else {
-        // Handle other requests (e.g., images, JavaScript files)
+        // Handle other requests (e.g., images, other files)
         res.writeHead(404);
         res.write('Not Found');
         res.end();
@@ -50,18 +57,3 @@ server.listen(port, (error) => {
         console.log("Server is listening on port " + port);
     }
 });
-
-
-// Nadav's S. Code
-
-
-user.addEventListener('click', () => {
-    login.classList.remove("hide");
-})
-
-
-// Nadav's C. Code
-
-
-
-// Stav's Code
