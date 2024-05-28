@@ -1,6 +1,6 @@
 // Global veribals
 
-const container = document.querySelector(".container"),
+const container = document.querySelector(".logincontainer"),
   overlay = document.querySelector(".overlay"),
   pwShowHide = document.querySelectorAll(".showHidePw"),
   pwFields = document.querySelectorAll(".password");
@@ -57,6 +57,26 @@ pwShowHide.forEach((eyeIcon) => {
       }
     });
   });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  let currentIndex = 0;
+  const images = document.querySelectorAll(".slider-img");
+  const totalImages = images.length;
+
+  function showImage(index) {
+      images.forEach((img, i) => {
+          img.classList.toggle("active", i === index);
+      });
+  }
+
+  function nextImage() {
+      currentIndex = (currentIndex + 1) % totalImages;
+      showImage(currentIndex);
+  }
+
+
+  setInterval(nextImage, 7000);
 });
 
 // Nadav's C. Code

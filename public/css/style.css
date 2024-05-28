@@ -20,7 +20,7 @@ Base styles * {
 }
 
 body {
-  background: var(--bg-color);
+  background: #E3E6E6;
   color: var(--text-color);
 }
 
@@ -142,7 +142,7 @@ header {
   opacity: 1; /* Become visible */
 }
 
-.container {
+.logincontainer {
   position: absolute;
   max-width: 430px;
   width: 100%;
@@ -159,12 +159,12 @@ header {
   z-index: 20; /* Ensure it's above the overlay */
 }
 
-.container.show {
+.logincontainer.show {
   opacity: 1; /* Become visible */
   transform: translateY(0); /* Move to original position */
 }
 
-.container .forms {
+.logincontainer .forms {
   display: flex;
   align-items: center;
   height: 440px;
@@ -172,34 +172,34 @@ header {
   transition: height 0.2s ease;
 }
 
-.container .form {
+.logincontainer .form {
   width: 50%;
   padding: 30px;
   background-color: #fff;
   transition: margin-left 0.18s ease;
 }
 
-.container.active .login {
+.logincontainer.active .login {
   margin-left: -50%;
   opacity: 0;
   transition: margin-left 0.18s ease, opacity 0.15s ease;
 }
 
-.container .signup {
+.logincontainer .signup {
   opacity: 0;
   transition: opacity 0.09s ease;
 }
 
-.container.active .signup {
+.logincontainer.active .signup {
   opacity: 1;
   transition: opacity 0.2s ease;
 }
 
-.container.active .forms {
+.logincontainer.active .forms {
   height: 600px;
 }
 
-.container .form .title {
+.logincontainer .form .title {
   position: relative;
   font-size: 27px;
   font-weight: 600;
@@ -322,6 +322,67 @@ header {
 .hide {
   display: none;
 }
+
+.banner-container {
+  position: relative;
+}
+
+.banner-container {
+  position: relative;
+}
+
+.banner-container .wrapper {
+  position: absolute;
+  width: 74vw;
+  height: 57vh;
+  box-shadow: 0px 1px 10px;
+  left: 12%;
+}
+
+.banner-container .wrapper-holder {
+  position: relative; /* Change from grid to relative positioning */
+  height: 100%;
+  width: 100%;
+}
+
+.banner-container .slider-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0; /* Hide by default */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition */
+}
+
+.banner-container .slider-img.active {
+  opacity: 1; /* Show the active image */
+}
+
+#slider-img-1 {
+  background-image: url(../img/bookbanner.png);
+}
+
+#slider-img-2 {
+  background-image: url(../img/banner2.png);
+}
+
+#slider-img-3 {
+  background-image: url(../img/banner3.png);
+}
+
+#slider-img-4 {
+  background-image: url(../img/banner4.png);
+  background-repeat: no-repeat;
+  background-size: auto; /* Set the background size to auto */
+  background-position: center; /* Center the background image */
+  width: 100%; /* Ensure the image takes full width of its container */
+  height: 100%; /* Ensure the image takes full height of its container */
+}
+
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {

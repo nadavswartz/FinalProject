@@ -3,56 +3,40 @@ const fs = require('fs');
 const path = require('path');
 const port = 3000;
 
+const mimeTypes = {
+    '.html': 'text/html',
+    '.css': 'text/css',
+    '.js': 'text/javascript',
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.gif': 'image/gif'
+};
+
 const server = http.createServer((req, res) => {
-    if (req.url === '/') {
-        // Serve HTML file
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        fs.readFile(path.join(__dirname, 'public', 'home.html'), (error, data) => {
-            if (error) {
-                res.writeHead(404);
-                res.write('File not found');
+    let filePath = path.join(__dirname, 'public', req.url === '/' ? 'home.html' : req.url);
+    let extname = String(path.extname(filePath)).toLowerCase();
+    let contentType = mimeTypes[extname] || 'application/octet-stream';
+
+    fs.readFile(filePath, (error, data) => {
+        if (error) {
+            if (error.code === 'ENOENT') {
+                res.writeHead(404, { 'Content-Type': 'text/html' });
+                res.end('404 Not Found');
             } else {
-                res.write(data);
+                res.writeHead(500);
+                res.end(`Server Error: ${error.code}`);
             }
-            res.end();
-        });
-    } else if (req.url.endsWith('.css')) {
-        // Serve CSS file
-        const cssPath = path.join(__dirname, 'public', req.url);
-        fs.readFile(cssPath, (error, data) => {
-            if (error) {
-                res.writeHead(404);
-                res.write('File not found');
-            } else {
-                res.writeHead(200, {'Content-Type': 'text/css'});
-                res.write(data);
-            }
-            res.end();
-        });
-    } else if (req.url.endsWith('.js')) {
-        // Serve JavaScript file
-        const jsPath = path.join(__dirname, 'public', req.url);
-        fs.readFile(jsPath, (error, data) => {
-            if (error) {
-                res.writeHead(404);
-                res.write('File not found');
-            } else {
-                res.writeHead(200, {'Content-Type': 'text/javascript'});
-                res.write(data);
-            }
-            res.end();
-        });
-    } else {
-        // Handle other requests (e.g., images, other files)
-        res.writeHead(404);
-        res.write('Not Found');
-        res.end();
-    }
+        } else {
+            res.writeHead(200, { 'Content-Type': contentType });
+            res.end(data, 'utf-8');
+        }
+    });
 });
 
 server.listen(port, (error) => {
     if (error) {
-        console.log("Something went wrong");
+        console.log("Something went wrong", error);
     } else {
         console.log("Server is listening on port " + port);
     }
