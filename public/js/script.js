@@ -8,12 +8,15 @@ const container = document.querySelector(".logincontainer"),
 const user = document.getElementById("user");
 const button = document.getElementById("floating-button");
 
+
 // Nadav's S. Code
 
 function showContainer() {
   overlay.classList.remove("hide");
   container.classList.remove("hide");
   button.classList.remove("hide");
+  var head = document.getElementById("header")
+  head.style.background = 'rgba(0, 0, 0, 0)'
   setTimeout(() => {
     overlay.classList.add("show");
     container.classList.add("show");
@@ -25,6 +28,8 @@ function hideContainer() {
   overlay.classList.remove("show");
   container.classList.remove("show");
   button.classList.remove("show");
+  var head = document.getElementById("header")
+  head.style.background = 'var(--bg-color)'
   setTimeout(() => {
     overlay.classList.add("hide");
     container.classList.add("hide");
@@ -33,7 +38,9 @@ function hideContainer() {
 }
 
 user.addEventListener("click", () => {
+
   setTimeout(showContainer, 300); // Show the container and overlay after 2 seconds
+
 });
 
 button.addEventListener("click", () => {
