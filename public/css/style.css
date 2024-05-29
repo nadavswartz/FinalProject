@@ -142,6 +142,15 @@ header {
   opacity: 1; /* Become visible */
 }
 
+.menu-container {
+  background-color: var(--bg-color);
+  position: absolute;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.5);
+  width: 15%;
+  height: 58%;
+  z-index: 10;
+}
+
 .logincontainer {
   position: absolute;
   max-width: 430px;
@@ -383,6 +392,38 @@ header {
   height: 100%; /* Ensure the image takes full height of its container */
 }
 
+.fantasy {
+  position: absolute;
+  left: 12%;
+  top: 70%;
+  box-shadow: 0px 1px 10px;
+  width: 74%;
+  height: 15%;
+}
+
+#fantasy-banner {
+  background-image: url(../img/fantasybanner.gif);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  display: flex; /* Enable flexbox to center text */
+  align-items: center; /* Vertically center text */
+  justify-content: center; /* Horizontally center text */
+  color: white; /* Text color */
+  font-size: 2em; /* Text size */
+  font-family: Arial, sans-serif; /* Font family */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+}
+
+.fantasy-books {
+  box-shadow: 0px 1px 10px;;
+}
+
+.fantasy-text {
+  font-size: 132%;
+}
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {

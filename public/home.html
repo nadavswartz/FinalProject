@@ -31,7 +31,7 @@
   </head>
   <body>
     <header id="header">
-      <button href="http://localhost:3000/" class="menu">
+      <button class="menu" id="menu-button">
         <i class="bx bx-menu"></i>
       </button>
 
@@ -45,6 +45,13 @@
       </div>
       <br /><br />
     </header>
+
+    <div class="overlay hide"></div>
+    <div class="menu-container hide">
+      <p>All books</p>
+      <p>Stores</p>
+      <p>Contact</p>
+    </div>
 
     <button id="floating-button" class="floating-button hide">
       <i class="bx bx-x"></i>
@@ -99,6 +106,14 @@
               <div id="slider-img-4" class="slider-img"></div>
           </div>
       </div>
+  </div>
+
+  <div class="fantasy">
+    <div id="fantasy-banner">Fantasy</div>
+    <div class="fantasy-books">
+      <span class="fantasy-text">Popular in Fantasy: </span><br>
+      <span>Books will be displayed here</span>
+    </div>
   </div>
 
     <script

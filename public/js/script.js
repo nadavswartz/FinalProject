@@ -7,6 +7,8 @@ const container = document.querySelector(".logincontainer"),
 
 const user = document.getElementById("user");
 const button = document.getElementById("floating-button");
+const menubutton = document.getElementById("menu-button");
+const menucontainer = document.querySelector(".menu-container")
 
 
 // Nadav's S. Code
@@ -21,7 +23,7 @@ function showContainer() {
     overlay.classList.add("show");
     container.classList.add("show");
     button.classList.add("show");
-  }, 100); // Adding a slight delay to ensure the transition takes effect
+  }, 100);
 }
 
 function hideContainer() {
@@ -37,6 +39,10 @@ function hideContainer() {
   }, 500);
 }
 
+function showMenuContainer() {
+  menucontainer.classList.remove("hide");
+}
+
 user.addEventListener("click", () => {
 
   setTimeout(showContainer, 300); // Show the container and overlay after 2 seconds
@@ -46,6 +52,10 @@ user.addEventListener("click", () => {
 button.addEventListener("click", () => {
   setTimeout(hideContainer, 300);
 });
+
+menubutton.addEventListener("click", () => {
+  setTimeout(showMenuContainer, 300);
+})
 
 //   js code to show/hide password and change icon
 pwShowHide.forEach((eyeIcon) => {
