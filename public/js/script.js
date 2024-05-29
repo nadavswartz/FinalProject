@@ -1,5 +1,4 @@
-// Global veribals
-
+// Global variables
 const container = document.querySelector(".logincontainer"),
   overlay = document.querySelector(".overlay"),
   pwShowHide = document.querySelectorAll(".showHidePw"),
@@ -8,8 +7,7 @@ const container = document.querySelector(".logincontainer"),
 const user = document.getElementById("user");
 const button = document.getElementById("floating-button");
 const menubutton = document.getElementById("menu-button");
-const menucontainer = document.querySelector(".menu-container")
-
+const menucontainer = document.querySelector(".menu-container");
 
 // Nadav's S. Code
 
@@ -41,21 +39,40 @@ function hideContainer() {
 
 function showMenuContainer() {
   menucontainer.classList.remove("hide");
+  overlay.classList.remove("hide");
+  setTimeout(() => {
+    overlay.classList.add("show");
+    menucontainer.classList.add("show");
+    // Ensure the menu container moves to the right position
+    menucontainer.style.left = '0';
+  }, 100);
+}
+
+function hideMenuContainer() {
+  overlay.classList.remove("show");
+  menucontainer.classList.remove("show");
+  setTimeout(() => {
+    overlay.classList.add("hide");
+    menucontainer.classList.add("hide");
+  }, 500)
 }
 
 user.addEventListener("click", () => {
-
-  setTimeout(showContainer, 300); // Show the container and overlay after 2 seconds
-
+  setTimeout(showContainer, 300); // Show the container and overlay after 300 milliseconds
 });
 
 button.addEventListener("click", () => {
-  setTimeout(hideContainer, 300);
+  setTimeout(hideContainer, 300); // Hide the container and overlay after 300 milliseconds
 });
 
 menubutton.addEventListener("click", () => {
-  setTimeout(showMenuContainer, 300);
-})
+  if (menucontainer.classList.toggle("hide")) {
+    setTimeout(hideMenuContainer, 100); // Hide the menu container after 100 milliseconds
+  } else {
+    setTimeout(showMenuContainer, 100); // Show the menu container after 100 milliseconds
+  }
+});
+
 
 //   js code to show/hide password and change icon
 pwShowHide.forEach((eyeIcon) => {
