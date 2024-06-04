@@ -1,43 +1,44 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
-const port = 3000;
+require('dotenv').config({ path: 'config/.env.local' });
 
-const mimeTypes = {
-    '.html': 'text/html',
-    '.css': 'text/css',
-    '.js': 'text/javascript',
-    '.png': 'image/png',
-    '.jpg': 'image/jpeg',
-    '.jpeg': 'image/jpeg',
-    '.gif': 'image/gif'
+// all the requires
+const mongoose = require('mongoose');
+const express = require('express');
+const session = require('express-session');
+const userRoutes = require('./routes/routes');
+const cors = require('cors');
+
+// connect to the DB
+const init = async () => {
+    await mongoose.connect(process.env.DB_CONNECTION_STRING, {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+    });
+
+
+    const app = express();
+    app.use(express.static('public'));
+    
+    app.use(cors());
+    app.use(express.urlencoded({ extended: false }));
+    app.use(express.json());
+    
+    app.use(session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+      }));
+    
+    app.set('view engine', 'ejs');
+    app.set('views', __dirname + '/views');
+    
+    app.use(userRoutes);
+    
+    // listen function for the web port 
+    const port = process.env.PORT || 3000;
+    return app.listen(port, () => {
+        console.log(`Server is running on port ${port} all set-up`);
+    });
 };
 
-const server = http.createServer((req, res) => {
-    let filePath = path.join(__dirname, 'public', req.url === '/' ? 'home.html' : req.url);
-    let extname = String(path.extname(filePath)).toLowerCase();
-    let contentType = mimeTypes[extname] || 'application/octet-stream';
-
-    fs.readFile(filePath, (error, data) => {
-        if (error) {
-            if (error.code === 'ENOENT') {
-                res.writeHead(404, { 'Content-Type': 'text/html' });
-                res.end('404 Not Found');
-            } else {
-                res.writeHead(500);
-                res.end(`Server Error: ${error.code}`);
-            }
-        } else {
-            res.writeHead(200, { 'Content-Type': contentType });
-            res.end(data, 'utf-8');
-        }
-    });
-});
-
-server.listen(port, (error) => {
-    if (error) {
-        console.log("Something went wrong", error);
-    } else {
-        console.log("Server is listening on port " + port);
-    }
-});
+// starts all
+init();
