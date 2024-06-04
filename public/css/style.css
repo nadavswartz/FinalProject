@@ -19,6 +19,12 @@ Base styles * {
   --p-font: 1rem;
 }
 
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+
 body {
   background: #E3E6E6;
   color: var(--text-color);
@@ -149,6 +155,41 @@ header {
   width: 15%;
   height: 58%;
   z-index: 10;
+  display: flex; /* Enable flexbox layout */
+  flex-direction: column; /* Arrange children in a column */
+  padding: 10px; /* Optional: Add some padding */
+  border-radius: 0 0 20px 0;
+  left: -100%; /* Start outside the viewport */
+  opacity: 0; /* Initially hidden */
+  transform: translateX(-100%); /* Initially move left */
+  transition: left 0.5s ease-in-out, opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
+}
+
+.menu-container.hide {
+  /* Move the menu container back to the left */
+  left: -100%;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menu-cat {
+  text-decoration: none; 
+  color: var(--text-color); 
+  font-size: 1.2em; 
+  font-family: 'Courier New', Courier, monospace;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+}
+
+.menu-cat:hover {
+  transform: translateY(-4px) scale(1);
+  color: var(--second-color);
+}
+
+.menu-container.show {
+  left: 0; /* Move into the viewport */
+  opacity: 1; /* Make visible */
+  transform: translateX(0); /* Move to original position */
 }
 
 .logincontainer {
