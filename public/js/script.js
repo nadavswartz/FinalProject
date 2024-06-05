@@ -1,13 +1,14 @@
 // Global variables
 const container = document.querySelector(".logincontainer"),
-  overlay = document.querySelector(".overlay"),
-  pwShowHide = document.querySelectorAll(".showHidePw"),
-  pwFields = document.querySelectorAll(".password");
+  overlay = document.querySelector(".overlay");
+
 
 const user = document.getElementById("user");
 const button = document.getElementById("floating-button");
 const menubutton = document.getElementById("menu-button");
 const menucontainer = document.querySelector(".menu-container");
+const pwShowHide = document.querySelectorAll(".showHidePw");
+const pwFields = document.querySelectorAll(".password");
 
 // Nadav's S. Code
 
@@ -80,16 +81,13 @@ pwShowHide.forEach((eyeIcon) => {
     pwFields.forEach((pwField) => {
       if (pwField.type === "password") {
         pwField.type = "text";
-        pwShowHide.forEach((icon) => {
-          icon.classList.replace("uil-eye-slash", "uil-eye");
-        });
       } else {
         pwField.type = "password";
-        pwShowHide.forEach((icon) => {
-          icon.classList.replace("uil-eye", "uil-eye-slash");
-        });
       }
     });
+    // Toggle icon classes for the clicked icon only
+    eyeIcon.classList.toggle("uil-eye");
+    eyeIcon.classList.toggle("uil-eye-slash");
   });
 });
 
