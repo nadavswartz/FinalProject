@@ -14,11 +14,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/home', function (req, res) {
-  if (req.session.userId) {
     res.sendFile('home.html', { root: path.join(__dirname, '../public') });
-  } else {
-    res.redirect('/login');
-  }
 });
 
 router.post('/login', userController.login);
