@@ -6,7 +6,7 @@ exports.register = async (req, res) => {
     try {
         const { username, password, email, firstname, lastname, address, city, zipcode, phonenumber, housenumber, floor} = req.body;
         await userService.register(username, password, email, firstname, lastname, address, city, zipcode, phonenumber, housenumber, floor);
-        console.log( `${username} register now`) // for me to see that a user register proparly
+        console.log( `${username} register now`) // for me to see that a user register propartly
         res.redirect('/login');
     } catch (error) {
         res.status(500).json({ errors: [error.message] });
@@ -20,7 +20,7 @@ exports.login = async (req, res) => {
         const user = await userService.login(email, password);
         if (user) {
             req.session.userId = user._id;
-            console.log( `user ${email} login `) // for me to see that a user login proparly
+            console.log( `user ${email} login `) // for me to see that a user login propartly
             res.redirect('/home');
         } else {
             res.status(401).json({ errors: ['Invalid email or password'] });
