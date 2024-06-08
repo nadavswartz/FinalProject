@@ -1,7 +1,7 @@
 const User = require('../models/users');
 const bcrypt = require('bcrypt');
 
-// register function that use bcrypt in order to make the password hashed and make the new user and save in the DB
+// register function that uses bcrypt in order to make the password hashed and make the new user and save in the DB
 async function register(username, password, email, firstname, lastname, address, city, zipcode, phonenumber, housenumber, floor) {  
   const saltRounds = 6;
   const hashedPassword = await bcrypt.hash(password, saltRounds);

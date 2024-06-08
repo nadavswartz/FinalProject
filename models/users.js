@@ -12,7 +12,7 @@ const user = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 6,
+    match: [/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}/, 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character'],
   },
   firstname: {
     type: String,
@@ -26,12 +26,12 @@ const user = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    match: [/.+\@.+\..+/, 'Please enter a valid email address'], // this is a way to validate that it's an email
+    match: [/.+\@.+\..+/, 'Please enter a valid email address'], // email validation
     unique: true,
   },
   phonenumber: {
-    type: Number,
-    match: [/^05(0|2|3|4|5|8)\d{7}$/, 'Please enter a valid Israeli phone number'],
+    type: String,
+    match: [/(?:\+972|0)(?:[23489]|5\d{1})\d{7}$/, 'Please enter a valid phone number'] , //phone number validation
   },
   address: {
     type: String,
