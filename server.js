@@ -14,7 +14,6 @@ const init = async () => {
         useNewUrlParser: true
     });
 
-
     const app = express();
     app.use(express.static('public'));
     
