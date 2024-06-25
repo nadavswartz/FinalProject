@@ -13,6 +13,10 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/books', (req, res) => {
+  res.render('books');
+})
+
 router.get('/home', function (req, res) {
     res.sendFile('home.html', { root: path.join(__dirname, '../public') });
 });

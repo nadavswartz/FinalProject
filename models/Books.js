@@ -1,36 +1,38 @@
 const mongoose = require("mongoose")
 const bcrypt = require("bcrypt");
 const { name } = require("ejs");
+//require('dotenv').config();
+
 
 // make new user schema using mongoose
 const Books = new mongoose.Schema({
-  id: {
+  Book_Name: {
+    type: String,
+    required: true,
+  },
+  Author: {
+    type: String,
+    required: true,
+  },
+  Year: {
     type: Number,
     required: true,
   },
-  name: {
-    type: String,
-    required: true,
-  },
-  year: {
+  Quantity: {
     type: Number,
     required: true,
   },
-  author: {
+  Category: {
     type: String,
     required: true,
   },
-  description: {
+  Description: {
     type: String,
     required: true,
   },
-  quantity: {
-    type: Number,
-    required: true,
-  },
-  category: {
-    type: String,
-    required: true,
+  Image: {
+    data: Buffer,
+    contentType: String,
   },
 })
 
