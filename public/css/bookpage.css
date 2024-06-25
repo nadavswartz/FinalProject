@@ -1,0 +1,58 @@
+.img_board{
+    border: solid;
+    background-image: url(../img/22.jpg);
+    position: absolute;
+    width: 20%;
+    height: 47%;
+    left: 12%;
+    top: 23%;
+    background-size: cover; /* Set the background size to auto */
+    background-position: center; /* Center the background image */
+}
+
+.book_title{
+    font-size: 37px;
+    position: absolute;
+    left: 35%;
+    top: 27%;
+}
+
+.author{
+    font-size: 18px;
+    color: rgb(161, 164, 168);
+    position: absolute;
+    left: 35%;
+    top: 38%;
+}
+
+.category{
+    font-size: 19px;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    left: 35%;
+    top: 50%;
+}
+
+.category_name{
+    font-size: 19px;
+    color: rgb(255, 0, 0);
+    position: absolute;
+    left: 41.3%;
+    top: 50%;
+}
+
+.year{
+    font-size: 19px;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    left: 52%;
+    top: 50%;
+}
+
+.year_year{
+    font-size: 19px;
+    color: rgb(255, 0, 0);
+    position: absolute;
+    left: 55.5%;
+    top: 50%;
+}

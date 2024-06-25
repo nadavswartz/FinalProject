@@ -21,6 +21,10 @@ router.get('/home', function (req, res) {
     res.sendFile('home.html', { root: path.join(__dirname, '../public') });
 });
 
+router.get('/bookpage', (req, res) => {
+  res.render('bookpage');
+})
+
 router.post('/login', userController.login);
 
 module.exports = router;
