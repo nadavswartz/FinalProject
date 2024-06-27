@@ -15,9 +15,7 @@ router.get('/login', (req, res) => {
 });
 
 
-router.get('/home', function (req, res) {
-    res.sendFile('home.html', { root: path.join(__dirname, '../public') });
-});
+router.get('/home', bookController.renderHomePage); 
 
 router.get('/bookpage', bookController.renderBookPage);
 

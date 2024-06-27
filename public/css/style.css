@@ -466,6 +466,22 @@ header {
   font-size: 132%;
 }
 
+/* Styles for the horizontal list */
+ul.horizontal-list {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Use flexbox layout */
+}
+
+ul.horizontal-list li {
+  margin-right: 20px; /* Add some space between items */
+}
+
+ul.horizontal-list li img {
+  max-width: 100px; /* Set a maximum width for images */
+}
+
+
 /* Responsive styles */
 @media screen and (max-width: 768px) {
   .logo {
