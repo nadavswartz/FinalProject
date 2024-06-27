@@ -1,10 +1,6 @@
 const mongoose = require("mongoose")
-const bcrypt = require("bcrypt");
-const { name } = require("ejs");
-//require('dotenv').config();
 
-
-// make new user schema using mongoose
+// make new book schema using mongoose
 const Books = new mongoose.Schema({
   Book_Name: {
     type: String,

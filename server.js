@@ -32,7 +32,6 @@ const init = async () => {
     
     app.use(userRoutes);
     
-    // listen function for the web port 
     const port = process.env.PORT || 3000;
     return app.listen(port, () => {
         console.log(`Server is running on port ${port} all set-up`);
