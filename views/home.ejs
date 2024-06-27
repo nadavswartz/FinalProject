@@ -117,6 +117,7 @@
               <% if (book.Image && book.Image.data) { %>
                 <img src="data:<%= book.Image.contentType %>;base64,<%= book.Image.data.toString('base64') %>" alt="<%= book.Book_Name %>">
               <% } %>
+              <a href="#">More Details</a>
             </li>
           <% }) %>
         <% } else { %>
