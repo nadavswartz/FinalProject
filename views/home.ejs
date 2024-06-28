@@ -105,8 +105,25 @@
   <div class="fantasy">
     <div id="fantasy-banner">Fantasy</div>
     <div class="fantasy-books">
-      <span class="fantasy-text">Popular in Fantasy: </span><br>
-      <span>Books will be displayed here</span>
+      <span class="fantasy-text">Popular in Fantasy: </span><br><br>
+      <ul class="horizontal-list">
+        <% if (fantasyBooks && fantasyBooks.length > 0) { %>
+          <% fantasyBooks.forEach(book => { %>
+            <li>
+              <h3><%= book.Book_Name %></h3>
+              <p>Author: <%= book.Author %></p>
+              <p>Release Date: <%= book.Year %></p>
+              <p>Description: <br><%= book.Description %></p>
+              <% if (book.Image && book.Image.data) { %>
+                <img src="data:<%= book.Image.contentType %>;base64,<%= book.Image.data.toString('base64') %>" alt="<%= book.Book_Name %>">
+              <% } %>
+              <a href="#">More Details</a>
+            </li>
+          <% }) %>
+        <% } else { %>
+          <li>No fantasy books available at the moment.</li>
+        <% } %>
+      </ul>
     </div>
   </div>
 

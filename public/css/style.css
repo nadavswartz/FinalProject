@@ -377,13 +377,13 @@ header {
   position: relative;
 }
 
-.banner-container {
+/* .banner-container {
   position: relative;
-}
+} */
 
 .banner-container .wrapper {
-  position: absolute;
-  width: 74vw;
+  /* position: absolute; */
+  /* width: 74vw; */
   height: 57vh;
   box-shadow: 0px 1px 10px;
   left: 12%;
@@ -413,24 +413,24 @@ header {
 }
 
 #slider-img-1 {
-  background-image: url(../img/bookbanner.png);
+  background-image: url(../img/banner1.jpg);
 }
 
 #slider-img-2 {
-  background-image: url(../img/banner2.png);
+  background-image: url(../img/banner2.jpg);
 }
 
 #slider-img-3 {
-  background-image: url(../img/banner3.png);
+  background-image: url(../img/banner3.jpg);
 }
 
 #slider-img-4 {
-  background-image: url(../img/banner4.png);
-  background-repeat: no-repeat;
-  background-size: auto; /* Set the background size to auto */
-  background-position: center; /* Center the background image */
+  background-image: url(../img/banner4.jpg);
+  /* background-repeat: no-repeat; */
+ /* background-size: auto;  Set the background size to auto */
+  /*background-position: center;  Center the background image */
   width: 100%; /* Ensure the image takes full width of its container */
-  height: 100%; /* Ensure the image takes full height of its container */
+  height: 100%; 
 }
 
 .fantasy {
@@ -465,6 +465,22 @@ header {
 .fantasy-text {
   font-size: 132%;
 }
+
+/* Styles for the horizontal list */
+ul.horizontal-list {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Use flexbox layout */
+}
+
+ul.horizontal-list li {
+  margin-right: 20px; /* Add some space between items */
+}
+
+ul.horizontal-list li img {
+  max-width: 100px; /* Set a maximum width for images */
+}
+
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {

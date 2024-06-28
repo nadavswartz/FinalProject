@@ -30,3 +30,13 @@ exports.renderBookPage = async (req, res) => {
         }
     }
 
+exports.renderHomePage = async (req, res) => {
+    try {
+        const fantasyBooks = await Books.find({Category: 'Fantasy'});
+
+        res.render('home', {fantasyBooks});
+    } catch (err) {
+        console.error('error fetching boosk:', err);
+        resizeTo.status(500).send('Error fetching books');
+    }
+}

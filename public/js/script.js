@@ -110,7 +110,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
   setInterval(nextImage, 7000);
 });
-
-// Nadav's C. Code
-
-// Stav's Code
