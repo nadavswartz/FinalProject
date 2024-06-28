@@ -114,8 +114,8 @@
               <p>Author: <%= book.Author %></p>
               <p>Release Date: <%= book.Year %></p>
               <p>Description: <br><%= book.Description %></p>
-              <% if (book.Image && book.Image.data) { %>
-                <img src="data:<%= book.Image.contentType %>;base64,<%= book.Image.data.toString('base64') %>" alt="<%= book.Book_Name %>">
+              <% if (book.Image) { %>
+                <img src="<%= book.Image %>" alt="<%= book.Book_Name %>">
               <% } %>
               <a href="#">More Details</a>
             </li>
