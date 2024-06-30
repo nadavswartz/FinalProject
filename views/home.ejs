@@ -105,24 +105,23 @@
   <div class="fantasy">
     <div id="fantasy-banner">Fantasy</div>
     <div class="fantasy-books">
-      <span class="fantasy-text">Popular in Fantasy: </span><br><br>
       <ul class="horizontal-list">
         <% if (fantasyBooks && fantasyBooks.length > 0) { %>
-          <% fantasyBooks.forEach(book => { %>
+          <% fantasyBooks.slice(0, 5).forEach(book => { %>
             <li>
               <h3><%= book.Book_Name %></h3>
+              <% if (book.Image) { %>
+                <img class="bookimg" src="<%= book.Image %>" alt="<%= book.Book_Name %>">
+              <% } %><br>
               <p>Author: <%= book.Author %></p>
               <p>Release Date: <%= book.Year %></p>
-              <p>Description: <br><%= book.Description %></p>
-              <% if (book.Image) { %>
-                <img src="<%= book.Image %>" alt="<%= book.Book_Name %>">
-              <% } %>
               <a href="#">More Details</a>
             </li>
           <% }) %>
         <% } else { %>
           <li>No fantasy books available at the moment.</li>
         <% } %>
+        <a href="#">View All</a>
       </ul>
     </div>
   </div>
