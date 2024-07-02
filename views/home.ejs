@@ -27,30 +27,34 @@
       </div>
     </div>
 
-    <div class="fantasy">
-      <div id="fantasy-banner">Fantasy</div>
-      <div class="fantasy-books">
-        <ul class="horizontal-list">
-          <% if (fantasyBooks && fantasyBooks.length > 0) { %>
-            <% fantasyBooks.slice(0, 4).forEach(book => { %>
-              <li>
-                <h3 class="book-title"><%= book.Book_Name %></h3><br>
-                <% if (book.Image) { %>
-                  <img class="bookimg" src="<%= book.Image %>" alt="<%= book.Book_Name %>">
-                <% } %><br>
-                <p>Author: <%= book.Author %></p>
-                <p>Release Date: <%= book.Year %></p>
-              </li>
-            <% }) %>
-          <% } else { %>
-            <li>No fantasy books available at the moment.</li>
-          <% } %>
-        </ul>
-        <div class="view-all">
-          <a href="#">View All</a>
+    <ul class="bookssection">
+      <div class="fantasy">
+        <div id="fantasy-banner">Fantasy</div>
+        <div class="fantasy-books">
+          <ul class="horizontal-list">
+            <% if (fantasyBooks && fantasyBooks.length > 0) { %>
+              <% fantasyBooks.slice(0, 4).forEach(book => { %>
+                <li>
+                  <h3 class="book-title"><%= book.Book_Name %></h3><br>
+                  <% if (book.Image) { %>
+                    <img class="bookimg" src="<%= book.Image %>" alt="<%= book.Book_Name %>">
+                  <% } %><br>
+                  <p>Author: <%= book.Author %></p>
+                  <p>Release Date: <%= book.Year %></p>
+                </li>
+              <% }) %>
+            <% } else { %>
+              <li>No fantasy books available at the moment.</li>
+            <% } %>
+          </ul>
+          <div class="view-all">
+            <a href="#">View All</a>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div>HI STAV</div>
+    </ul>
 
     
 
