@@ -440,29 +440,34 @@ header {
   height: 100%; 
 }
 
+.book-section {
+  position: absolute;
+  width: 100%;
+  top: 73%;
+}
+
 .fantasy {
   position: relative;
-  left: -5%;
-  top: 70%;
+  left: 12%;
+  top: 94%;
   box-shadow: 0px 1px 10px;
-  width: 130%;
-  height: auto; /* Allow height to adjust based on content */
-  padding-bottom: 20px; /* Add some padding to the bottom */
+  width: 75%;
+  height: auto;
+  padding-bottom: 20px;
 }
 
-.books-section {
-  position: absolute;
-  left: 12%;
-  top: 70%;
-}
 
 #fantasy-banner {
-  background-image: url(../img/fantasybanner.gif);
+  border-radius: 10px;
+  top: 70%;
+  position: relative;
+  left: 12%;
+  background-image: url(../img/fantasybanner.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: 100%;
-  height: 121px; /* Adjust height as needed */
+  width: 75%;
+  height: 134px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -471,6 +476,7 @@ header {
   font-family: Arial, sans-serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   z-index: 2;
+  margin-bottom: 20px;
 }
 
 .fantasy-books {
@@ -528,7 +534,7 @@ ul.horizontal-list li .book-title {
 }
 
 .book-title {
-  font-size: 16px; /* Adjust font size as needed */
+  font-size: 17px; /* Adjust font size as needed */
   line-height: 1.2; /* Ensure proper line height for readability */
   height: 3.6em; /* Limit the height to approximately 2 lines of text */
   overflow: hidden; /* Hide any overflow text */
@@ -554,22 +560,51 @@ ul.horizontal-list li img {
   margin: 0 auto; /* Center the image horizontally */
 }
 
-.horizontal-list a.view-all {
+/* .horizontal-list a.view-all {
   display: block;
   text-align: center;
   margin-top: 20px;
   font-size: 1.2em;
-  color: var(--text-color); /* Use the defined text color */
+  color: var(--text-color); 
   text-decoration: none;
 }
 
 .horizontal-list a.view-all:hover {
-  color: var(--second-color); /* Change color on hover */
+  color: var(--second-color); 
+} */
+
+button {
+  position: relative;
+  display: inline-block;
+  margin: 15px;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #725AC1;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid #725AC1;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 #725AC1;
+}
+
+button:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #725AC1;
+}
+
+button:active {
+  transform: scale(0.9);
 }
 
 .horizontal-list a {
-  margin-top: 40%; /* Adjust margin as needed */
+  margin-top: 40%;
 }
+
+
 
 .bookimg {
   border-radius: 6% !important; 
@@ -583,6 +618,29 @@ ul.horizontal-list li img {
 
 .bookimg:hover {
   transform: translateY(-4px) scale(1.1);
+}
+
+#fiction-banner {
+  border-radius: 10px;
+  top: 70%;
+  position: relative;
+  left: 12%;
+  background-image: url(../img/fictionbanner.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 75%;
+  height: 134px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2em;
+  font-family: Arial, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  margin-bottom: 20px;
+  margin-top: 66px;
 }
 
 /* Responsive styles */
