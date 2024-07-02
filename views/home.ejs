@@ -28,9 +28,10 @@
     </div>
 
 
-    <div class="books-section">
+    <ul class="book-section">
+      <div id="fantasy-banner"></div>
+
       <div class="fantasy">
-        <div id="fantasy-banner">Fantasy</div>
         <div class="fantasy-books">
           <ul class="horizontal-list">
             <% if (fantasyBooks && fantasyBooks.length > 0) { %>
@@ -51,11 +52,65 @@
             <% } %>
           </ul>
           <div class="view-all">
-            <a href="#">View All</a>
+              <button>View All</button>
           </div>
         </div>
       </div>
-    </div>
+
+      <div id="horror-banner"></div>
+      <div class="fantasy">
+        <div class="fantasy-books">
+          <ul class="horizontal-list">
+            <% if (horrorBooks && horrorBooks.length > 0) { %>
+              <% horrorBooks.slice(0, 4).forEach(book => { %>
+                <li>
+                  <h3 class="book-title"><%= book.Book_Name %></h3><br>
+                  <% if (book.Image) { %>
+                    <a href="/bookpage/<%= encodeURIComponent(book.Book_Name) %>">
+                      <img class="bookimg" href="/bookpage/<%= encodeURIComponent(book.Book_Name) %>" src="<%= book.Image %>" alt="<%= book.Book_Name %>">
+                      </a>
+                  <% } %><br>
+                  <p>Author: <%= book.Author %></p>
+                  <p>Release Date: <%= book.Year %></p>
+                </li>
+              <% }) %>
+            <% } else { %>
+              <li>No fantasy books available at the moment.</li>
+            <% } %>
+          </ul>
+          <div class="view-all">
+              <button>View All</button>
+          </div>
+        </div>
+      </div>
+      
+      <div id="fiction-banner"></div>
+      <div class="fantasy">
+        <div class="fantasy-books">
+          <ul class="horizontal-list">
+            <% if (fictionBooks && fictionBooks.length > 0) { %>
+              <% fictionBooks.slice(0, 4).forEach(book => { %>
+                <li>
+                  <h3 class="book-title"><%= book.Book_Name %></h3><br>
+                  <% if (book.Image) { %>
+                    <a href="/bookpage/<%= encodeURIComponent(book.Book_Name) %>">
+                      <img class="bookimg" href="/bookpage/<%= encodeURIComponent(book.Book_Name) %>" src="<%= book.Image %>" alt="<%= book.Book_Name %>">
+                      </a>
+                  <% } %><br>
+                  <p>Author: <%= book.Author %></p>
+                  <p>Release Date: <%= book.Year %></p>
+                </li>
+              <% }) %>
+            <% } else { %>
+              <li>No fantasy books available at the moment.</li>
+            <% } %>
+          </ul>
+          <div class="view-all">
+              <button>View All</button>
+          </div>
+        </div>
+      </div>  
+    </ul>
 
     
 
