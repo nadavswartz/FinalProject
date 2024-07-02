@@ -1,5 +1,6 @@
 .info
 {
+    font-size: 16;
     font-family: 'Roboto Slab', serif;
     font-weight: 200;
     margin-left: 18%;
@@ -16,6 +17,7 @@
 
 h1+p
 {
+    font-size: 16;
     margin-top: 5%;
     /* font-family: 'Roboto Slab', serif;
     font-weight: 200; */
@@ -23,6 +25,7 @@ h1+p
 
 p
 {
+    font-size: 16;
     margin-left: 22%;
     font-family: 'Roboto Slab', serif;
     font-weight: 200;
