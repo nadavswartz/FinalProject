@@ -34,7 +34,7 @@
           <% if (fantasyBooks && fantasyBooks.length > 0) { %>
             <% fantasyBooks.slice(0, 4).forEach(book => { %>
               <li>
-                <h3 class="book-title"><%= book.Book_Name %></h3><br>
+                <a href="/bookpage/<%= encodeURIComponent(book.Book_Name) %>"><%= book.Book_Name %></a>
                 <% if (book.Image) { %>
                   <img class="bookimg" src="<%= book.Image %>" alt="<%= book.Book_Name %>">
                 <% } %><br>

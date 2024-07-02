@@ -14,21 +14,18 @@ exports.addBook = async (req, res) => {
 
 // Controller function to fetch books and render bookspage
 exports.renderBookPage = async (req, res) => {
-        try {
-            // for now it's just make random book
-            const randomSkip = Math.floor(Math.random()* 150 ) +1;
-            const books = await Books.find().skip(randomSkip).limit(1);
-            if (books.length === 0) {
-                return res.render('bookpage', { book: null });
-            }
-            const book = books[0];
-            console.log(book.Book_Name)
-            res.render('bookpage', { book });
-        } catch (err) {
-            console.error('Error fetching book:', err);
-            res.status(500).send('Error fetching book');
+    try {
+        const Book_Name = req.params.Book_Name;
+        const book = await Books.findOne({ Book_Name: Book_Name });
+        if (!book) {
+            return res.render('bookpage', { book: null });
         }
+        res.render('bookpage', { book });
+    } catch (err) {
+        console.error('Error fetching book:', err);
+        res.status(500).send('Error fetching book');
     }
+};
 
 exports.renderHomePage = async (req, res) => {
     try {
