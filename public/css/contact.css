@@ -1,22 +1,30 @@
 .info
 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 200;
     margin-left: 18%;
     line-height: 2;
 }
 
-h1
+.contact-title
 {
-    margin-top: 7%;
+    margin-top: 23px;
     text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800;
 }
 
 h1+p
 {
     margin-top: 5%;
+    /* font-family: 'Roboto Slab', serif;
+    font-weight: 200; */
 }
 
 p
 {
     margin-left: 22%;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 200;
 }
 

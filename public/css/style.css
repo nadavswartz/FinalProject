@@ -102,13 +102,20 @@ header {
 }
 
 .logo {
-  right: 45%;
+  right: 47%;
   position: absolute;
   font-size: 35px;
   color: var(--text-color);
   font-weight: 800;
   text-decoration: none;
 }
+
+
+.imglogo{
+  width: 195px;
+  height: 89px;
+}
+
 
 .floating-button {
   position: fixed; /* Fixed positioning to float above content */
@@ -177,7 +184,8 @@ header {
   text-decoration: none; 
   color: var(--text-color); 
   font-size: 1.2em; 
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'PT Serif', serif;
+  /* font-family: 'Courier New', Courier, monospace; */
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 }
@@ -462,6 +470,7 @@ header {
   top: 70%;
   position: relative;
   left: 12%;
+  background-image: url(../img/fantasybanner.png);
   background-image: url(../img/fantasybanner.png);
   background-size: cover;
   background-position: center;
