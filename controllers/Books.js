@@ -4,7 +4,7 @@ const Books = require('../models/Books');
 //register function - gets all the values and redirect to /books
 exports.addBook = async (req, res) => {
     try {
-        const { Book_Name, Author, Year, Quantity, Category, Description, Image} = req.body;
+        const { Book_Name, Author, Year, Quantity, Category, Description, Image,} = req.body;
         await bookService.addBook(Book_Name, Author, Year, Quantity, Category, Description, Image);
         res.redirect('/Books');
     } catch (error) {
