@@ -15,6 +15,10 @@ router.get('/login', (req, res) => {
 });
 
 
+router.get('/about', (req, res) => {
+  res.render('about');
+})
+
 router.get('/home', bookController.renderHomePage); 
 
 router.get('/bookpage', bookController.renderBookPage);

@@ -8,7 +8,7 @@ const Books = new mongoose.Schema({
   },
   Author: {
     type: String,
-    required: true,
+    required: false,
   },
   Year: {
     type: Number,
@@ -27,8 +27,8 @@ const Books = new mongoose.Schema({
     required: true,
   },
   Image: {
-    data: Buffer,
-    contentType: String,
+    type: String,
+    required: true,
   },
 })
 

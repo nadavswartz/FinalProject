@@ -9,7 +9,7 @@ const cors = require('cors');
 
 // connect to the DB
 const init = async () => {
-    await mongoose.connect(process.env.DB_CONNECTION_STRING, {
+    mongoose.connect(process.env.DB_CONNECTION_STRING_db, {
         useUnifiedTopology: true,
         useNewUrlParser: true
     });

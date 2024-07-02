@@ -14,19 +14,21 @@ exports.addBook = async (req, res) => {
 
 // Controller function to fetch books and render bookspage
 exports.renderBookPage = async (req, res) => {
-    try {
-        // Fetch the first book from the database
-        const book = await Books.findOne(); // Assuming you want to display the first book found
-        console.log(book.Book_Name);
-        if (!book) {
-            return res.render('bookpage', { book: null }); // Render with null if no book found
+        try {
+            // for now it's just make random book
+            const randomSkip = Math.floor(Math.random()* 150 ) +1;
+            const books = await Books.find().skip(randomSkip).limit(1);
+            if (books.length === 0) {
+                return res.render('bookpage', { book: null });
+            }
+            const book = books[0];
+            console.log(book.Book_Name)
+            res.render('bookpage', { book });
+        } catch (err) {
+            console.error('Error fetching book:', err);
+            res.status(500).send('Error fetching book');
         }
-        res.render('bookpage', { book }); // Render the bookpage.ejs template with the retrieved book data
-    } catch (err) {
-        console.error('Error fetching book:', err);
-        res.status(500).send('Error fetching book');
     }
-}
 
 exports.renderHomePage = async (req, res) => {
     try {

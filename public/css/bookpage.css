@@ -1,58 +1,81 @@
-.img_board{
-    border: solid;
-    background-image: url(../img/22.jpg);
-    position: absolute;
-    width: 20%;
-    height: 47%;
-    left: 12%;
-    top: 23%;
-    background-size: cover; /* Set the background size to auto */
-    background-position: center; /* Center the background image */
+.book-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #f9f9f9;
 }
 
-.book_title{
+.book-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 80%;
+    margin: 10px auto;
+    border: 1px solid #ddd;
+    padding: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transition: box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.img_board img {
+    max-width: 70%;
+    height: auto;
+}
+
+.book-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+    margin-top: 20px;
+    color: #333; 
+}
+
+.book_title {
     font-size: 37px;
-    position: absolute;
-    left: 35%;
-    top: 27%;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    color: #444; 
 }
 
-.author{
+.author, .category, .year, .category_name, .year_year {
     font-size: 18px;
-    color: rgb(161, 164, 168);
-    position: absolute;
-    left: 35%;
-    top: 38%;
-}
-
-.category{
-    font-size: 19px;
     color: rgb(0, 0, 0);
-    position: absolute;
-    left: 35%;
-    top: 50%;
+    margin-bottom: 10px;
 }
 
-.category_name{
-    font-size: 19px;
-    color: rgb(255, 0, 0);
-    position: absolute;
-    left: 41.3%;
-    top: 50%;
+.category, .year {
+    font-family: 'Georgia', serif; /* elegant serif font */
+    font-size: 22px; /* larger font size */
+    letter-spacing: 1px; /* space between letters */
+    color: #333; /* dark gray */
 }
-
-.year{
-    font-size: 19px;
-    color: rgb(0, 0, 0);
-    position: absolute;
-    left: 52%;
-    top: 50%;
+.description-title {
+    font-family: 'Georgia', serif; /* elegant serif font */
+    font-size: 22px; /* larger font size */
+    letter-spacing: 1px; /* space between letters */
+    color: #333; /* dark gray */
+    margin-bottom: 10px;
 }
-
-.year_year{
-    font-size: 19px;
-    color: rgb(255, 0, 0);
-    position: absolute;
-    left: 55.5%;
-    top: 50%;
+.author-title {
+    font-family: 'Georgia', serif; /* elegant serif font */
+    font-size: 22px; /* larger font size */
+    letter-spacing: 1px; /* space between letters */
+    color: #333; /* dark gray */
+    margin-bottom: 10px;
+}
+.description {
+    margin-top: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    text-align: justify;
 }

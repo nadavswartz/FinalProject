@@ -1,4 +1,4 @@
-Base styles * {
+* {
   padding: 0;
   margin: 0;
   text-decoration: none;
@@ -28,10 +28,11 @@ a {
 body {
   background: #E3E6E6;
   color: var(--text-color);
+  margin-top: 70px; /* Adjust this value based on the height of your header */
 }
 
 header {
-  position: relative;
+  position: fixed; /* Changed from relative to fixed */
   top: 0;
   right: 0;
   left: 0;
@@ -43,6 +44,7 @@ header {
   align-items: center;
   justify-content: space-between;
   transition: all 0.6s;
+  width: 100%; /* Ensure the header takes the full width of the viewport */
 }
 
 .menu {
@@ -110,8 +112,8 @@ header {
 
 .floating-button {
   position: fixed; /* Fixed positioning to float above content */
-  top: 22%; /* Adjust as needed */
-  left: 50%; /* Adjust as needed */
+  top: 29%; /* Adjust as needed */
+  left: 48%; /* Adjust as needed */
   background: #fff; /* Same as container to look consistent */
   color: var(--text-color);
   border: none; /* No border */
@@ -150,26 +152,25 @@ header {
 
 .menu-container {
   background-color: var(--bg-color);
-  position: absolute;
+  position: fixed; /* Fixed positioning to stay visible */
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.5);
-  width: 15%;
-  height: 58%;
+  width: 15%; /* Adjust width as needed */
+  height: 58%; /* Adjust height as needed */
   z-index: 10;
-  display: flex; /* Enable flexbox layout */
-  flex-direction: column; /* Arrange children in a column */
-  padding: 10px; /* Optional: Add some padding */
-  border-radius: 0 0 20px 0;
-  left: -100%; /* Start outside the viewport */
+  display: flex; /* Flexbox layout for children */
+  flex-direction: column; /* Arrange children vertically */
+  padding: 10px; /* Padding for content */
+  border-radius: 0 0 20px 0; /* Rounded corners */
+  left: -100%; /* Initially hide outside viewport */
   opacity: 0; /* Initially hidden */
-  transform: translateX(-100%); /* Initially move left */
-  transition: left 0.5s ease-in-out, opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
+  transform: translateX(-100%); /* Initially off-screen to the left */
+  transition: left 0.5s ease-in-out, opacity 0.5s ease, transform 0.5s ease; /* Smooth transitions */
 }
 
 .menu-container.hide {
-  /* Move the menu container back to the left */
-  left: -100%;
-  opacity: 0;
-  visibility: hidden;
+  left: -100%; /* Move back outside viewport */
+  opacity: 0; /* Hide */
+  visibility: hidden; /* Ensure it's not interactive when hidden */
 }
 
 .menu-cat {
@@ -193,27 +194,27 @@ header {
 }
 
 .logincontainer {
-  position: absolute;
-  max-width: 430px;
+  position: fixed; /* Fixed positioning to stay visible */
+  max-width: 430px; /* Adjust maximum width as needed */
   width: 100%;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  margin: 0 20px;
-  left: 40%;
-  top: 30%;
+  background: #fff; /* Background color */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  overflow: hidden; /* Hide overflow */
+  margin: 0 auto; /* Center horizontally */
+  left: 0; /* Center horizontally */
+  right: 0; /* Center horizontally */
+  top: 35%; /* Center vertically */
+  transform: translateY(-50%); /* Center vertically */
   opacity: 0; /* Initially hidden */
-  transform: translateY(-20px); /* Initially moved upwards */
   transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
-  z-index: 20; /* Ensure it's above the overlay */
+  z-index: 20; /* Ensure it's above other elements */
 }
 
 .logincontainer.show {
-  opacity: 1; /* Become visible */
+  opacity: 1; /* Make visible */
   transform: translateY(0); /* Move to original position */
 }
-
 .logincontainer .forms {
   display: flex;
   align-items: center;
@@ -227,6 +228,12 @@ header {
   padding: 30px;
   background-color: #fff;
   transition: margin-left 0.18s ease;
+}
+
+.logincontainer.hide {
+  opacity: 0; /* Hide */
+  transform: translateY(-50%); /* Move off-screen */
+  pointer-events: none; /* Disable pointer events when hidden */
 }
 
 .logincontainer.active .login {
@@ -430,7 +437,7 @@ header {
  /* background-size: auto;  Set the background size to auto */
   /*background-position: center;  Center the background image */
   width: 100%; /* Ensure the image takes full width of its container */
-  height: 100%; Ensure the image takes full height of its container
+  height: 100%; 
 }
 
 .fantasy {
@@ -439,7 +446,8 @@ header {
   top: 70%;
   box-shadow: 0px 1px 10px;
   width: 74%;
-  height: 15%;
+  height: auto; /* Allow height to adjust based on content */
+  padding-bottom: 20px; /* Add some padding to the bottom */
 }
 
 #fantasy-banner {
@@ -448,18 +456,38 @@ header {
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100%;
-  display: flex; /* Enable flexbox to center text */
-  align-items: center; /* Vertically center text */
-  justify-content: center; /* Horizontally center text */
-  color: white; /* Text color */
-  font-size: 2em; /* Text size */
-  font-family: Arial, sans-serif; /* Font family */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+  height: 121px; /* Adjust height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2em;
+  font-family: Arial, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 
 .fantasy-books {
-  box-shadow: 0px 1px 10px;;
+  box-shadow: 0px 1px 10px;
+  padding: 20px;
+}
+
+.fantasy-books .view-all {
+  text-align: center; /* Center the link */
+  margin-top: 20px; /* Add some space above the link */
+}
+
+.fantasy-books .view-all a {
+  display: inline-block; /* Make the link an inline block */
+  padding: 10px 20px; /* Add padding for better appearance */
+  background-color: var(--second-color); /* Add background color */
+  color: white; /* Change text color to white */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Add rounded corners */
+}
+
+.fantasy-books .view-all a:hover {
+  background-color: darken(var(--second-color), 10%); /* Darken on hover */
 }
 
 .fantasy-text {
@@ -471,16 +499,80 @@ ul.horizontal-list {
   list-style-type: none; /* Remove bullet points */
   padding: 0; /* Remove default padding */
   display: flex; /* Use flexbox layout */
+  flex-wrap: wrap; /* Allow wrapping if items exceed container width */
+  justify-content: space-between; /* Distribute items evenly */
+  align-items: flex-start; /* Align items to the top */
 }
 
 ul.horizontal-list li {
-  margin-right: 20px; /* Add some space between items */
+  flex: 1 1 200px;
+  margin: 10px;
+  text-align: center;
+}
+
+
+ul.horizontal-list li .book-title {
+  height: 3em; /* Fixed height for book titles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden; /* Hide overflow if the text is too long */
+  margin-top: 10px; /* Add margin above the title */
+}
+
+.book-title {
+  font-size: 16px; /* Adjust font size as needed */
+  line-height: 1.2; /* Ensure proper line height for readability */
+  height: 3.6em; /* Limit the height to approximately 2 lines of text */
+  overflow: hidden; /* Hide any overflow text */
+  text-overflow: ellipsis; /* Display ellipsis (...) when text overflows */
+  white-space: nowrap; /* Prevent wrapping of text */
+}
+
+ul.horizontal-list li .bookimg {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-left: -10px; /* Adjust the value as needed */
 }
 
 ul.horizontal-list li img {
-  max-width: 100px; /* Set a maximum width for images */
+  width: 100%; /* Make images take the full width of their container */
+  max-width: 200px; /* Set a maximum width for images */
+  height: 300px; /* Set a fixed height for images */
+  object-fit: contain; /* Ensure the image is contained within the container */
+  display: block;
+  margin: 0 auto; /* Center the image horizontally */
 }
 
+.horizontal-list a.view-all {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: var(--text-color); /* Use the defined text color */
+  text-decoration: none;
+}
+
+.horizontal-list a.view-all:hover {
+  color: var(--second-color); /* Change color on hover */
+}
+
+.horizontal-list a {
+  margin-top: 40%; /* Adjust margin as needed */
+}
+
+.bookimg {
+  width: 100% !important;
+  max-width: 200px !important; /* Adjust this value as needed */
+  height: 300px !important; /* Fixed height for images */
+  object-fit: contain !important; /* Maintain aspect ratio */
+  display: block !important;
+  margin: 0 auto !important; /* Center the image horizontally */
+}
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {
@@ -501,4 +593,10 @@ ul.horizontal-list li img {
     font-size: 1.125rem;
     padding: 1rem 2rem;
   }
+
+  ul.horizontal-list li {
+    flex: 1 1 100%; /* Ensure items take up full width on smaller screens */
+    margin: 10px 0; /* Add some space between items */
+  }
+
 }
