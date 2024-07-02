@@ -21,7 +21,7 @@ router.get('/about', (req, res) => {
 
 router.get('/home', bookController.renderHomePage); 
 
-router.get('/bookpage', bookController.renderBookPage);
+router.get('/bookpage/:Book_Name', bookController.renderBookPage);
 
 router.get('/books', (req, res) => {
   res.render('books');
