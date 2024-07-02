@@ -36,7 +36,9 @@
               <li>
                 <h3 class="book-title"><%= book.Book_Name %></h3><br>
                 <% if (book.Image) { %>
-                  <img class="bookimg" src="<%= book.Image %>" alt="<%= book.Book_Name %>">
+                  <a href="/bookpage/<%= encodeURIComponent(book.Book_Name) %>">
+                    <img class="bookimg" href="/bookpage/<%= encodeURIComponent(book.Book_Name) %>" src="<%= book.Image %>" alt="<%= book.Book_Name %>">
+                    </a>
                 <% } %><br>
                 <p>Author: <%= book.Author %></p>
                 <p>Release Date: <%= book.Year %></p>
