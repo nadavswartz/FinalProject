@@ -110,3 +110,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
   setInterval(nextImage, 7000);
 });
+
+// Nadav's Cohen Script
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: {lat: 32.048694, lng: 34.808089}
+  });
+
+  var locations = [
+    {lat: 32.048694, lng: 34.808089},
+    {lat: 31.784743, lng: 34.643353},
+    {lat: 31.878642, lng:  34.819861},
+    {lat: 31.777133, lng: 35.203170   }
+  ];
+    
+
+  locations.forEach(function(location) {
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map
+    });
+  });
+}
