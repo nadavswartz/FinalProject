@@ -630,7 +630,7 @@ button:active {
 }
 
 #fiction-banner {
-  border-radius: 10px;
+  border-radius: 6px;
   top: 70%;
   position: relative;
   left: 12%;
@@ -653,11 +653,11 @@ button:active {
 }
 
 #horror-banner {
-  border-radius: 10px;
+  border-radius: 6px;
   top: 70%;
   position: relative;
   left: 12%;
-  background-image: url(../img/horrorbanner.jpg);
+  background-image: url(../img/horrorbanner.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
