@@ -114,21 +114,21 @@ document.addEventListener("DOMContentLoaded", function() {
 // Nadav's Cohen Script
 
 function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10,
-    center: {lat: 32.048694, lng: 34.808089}
+  let map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 9,
+    center: {lat: 32.047000, lng: 34.808080}
   });
 
-  var locations = [
+  let locations = [
     {lat: 32.048694, lng: 34.808089},
     {lat: 31.784743, lng: 34.643353},
     {lat: 31.878642, lng:  34.819861},
-    {lat: 31.777133, lng: 35.203170   }
+    {lat: 31.777133, lng: 35.203170},
   ];
     
 
   locations.forEach(function(location) {
-    var marker = new google.maps.Marker({
+    let marker = new google.maps.Marker({
       position: location,
       map: map
     });
