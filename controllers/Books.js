@@ -13,6 +13,7 @@ exports.addBook = async (req, res) => {
 };
 
 // Controller function to fetch books and render bookspage
+// Controller function to fetch books and render bookspage
 exports.renderBookPage = async (req, res) => {
     try {
         const Book_Name = req.params.Book_Name;
@@ -20,7 +21,10 @@ exports.renderBookPage = async (req, res) => {
         if (!book) {
             return res.render('bookpage', { book: null });
         }
-        res.render('bookpage', { book });
+
+        const exchangeRate = await bookService.getILSExchangeRate();
+
+        res.render('bookpage', { book, exchangeRate });
     } catch (err) {
         console.error('Error fetching book:', err);
         res.status(500).send('Error fetching book');

@@ -24,7 +24,7 @@
     margin-bottom: 1rem;
 }
 
-.content p:first-of-type {
+.bold-text {
     font-weight: bold;
 }
 

@@ -80,8 +80,8 @@
             <div class="book-card">
                 <div class="img_board">
                     <% if (book.Image) { %>
-                        <img src="<%= book.Image %>" alt="<%= book.Book_Name %>">
-                        <p class="book-price">Price: <%= book.Price %>$</p>
+                        <img src="<%= book.Image %>" alt="<%= book.Book_Name %>" >
+                        <p class="book-price">Price: <%= book.Price %>$ / <%= (book.Price * exchangeRate).toFixed(2) %>₪</p>
                         <a href="/cart">
                         <button class="btn-53">
                             <div class="original">Add to Cart</div>

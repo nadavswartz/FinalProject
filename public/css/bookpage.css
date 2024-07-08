@@ -83,12 +83,10 @@
     text-align: justify;
 }
 .book-price {
-    font-family: 'Georgia', serif; 
-    font-size: 22px; 
-    letter-spacing: 1px; 
-    color: #333; 
-    margin-left: 14%;
-    margin-top: 7%;
+  font-size: 1.4em;
+  color: #333; 
+  margin: 20px 10px;
+  margin-left: 9px;
 }
 
 .btn-53,
