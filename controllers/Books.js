@@ -23,11 +23,11 @@ exports.renderBookPage = async (req, res) => {
         }
 
         const exchangeRate = await bookService.getILSExchangeRate();
-
+        
         res.render('bookpage', { book, exchangeRate });
     } catch (err) {
         console.error('Error fetching book:', err);
-        res.status(500).send('Error fetching book');
+        res.status(500).send('Error uploading book');
     }
 };
 

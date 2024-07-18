@@ -31,5 +31,8 @@ router.post('/books', bookController.addBook);
 
 router.post('/login', userController.login);
 
+router.get('/cart', (req, res) => {
+  res.render('cart', { user: req.session.user });
+});
 
 module.exports = router;

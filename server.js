@@ -13,7 +13,7 @@ const init = async () => {
         useUnifiedTopology: true,
         useNewUrlParser: true
     });
-
+    
     const app = express();
     app.use(express.static('public'));
     
