@@ -701,3 +701,11 @@ button:active {
   }
 
 }
+
+.search-input {
+  display: none;
+}
+#searchForm {
+  display: flex;
+  align-items: center
+}

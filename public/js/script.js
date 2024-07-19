@@ -136,5 +136,36 @@ function initMap() {
   });
 }
 
+function toggleSearchInput() {
+  const input = document.getElementById('searchInput');
+  const inputValue = input.value.trim();
 
+  if (input.style.display === 'none' || input.style.display === '') {
+      input.style.display = 'inline-block';
+      input.focus();
+  } else {
+      if (inputValue !== '') {
+          const encodedBookName = encodeURIComponent(inputValue);
+          window.location.href = `/bookpage/${encodedBookName}`;
+      } else {
+          resetSearchInput();
+      }
+  }
+}
 
+function resetSearchInput() {
+  const input = document.getElementById('searchInput');
+  input.style.display = 'none';
+  input.value = ''; // Clear the input value
+}
+
+document.getElementById('searchInput').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+      e.preventDefault();
+      toggleSearchInput();
+  }
+});
+
+document.getElementById('searchInput').addEventListener('blur', function () {
+  resetSearchInput();
+});

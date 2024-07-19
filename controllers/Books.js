@@ -1,6 +1,7 @@
 const bookService = require('../services/book');
 const Books = require('../models/Books');
 
+
 //register function - gets all the values and redirect to /books
 exports.addBook = async (req, res) => {
     try {
@@ -13,11 +14,11 @@ exports.addBook = async (req, res) => {
 };
 
 // Controller function to fetch books and render bookspage
-// Controller function to fetch books and render bookspage
 exports.renderBookPage = async (req, res) => {
     try {
         const Book_Name = req.params.Book_Name;
         const book = await Books.findOne({ Book_Name: Book_Name });
+        console.log('Book Name:', Book_Name);
         if (!book) {
             return res.render('bookpage', { book: null });
         }

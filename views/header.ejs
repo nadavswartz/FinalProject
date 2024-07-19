@@ -26,11 +26,16 @@
     </a>
     
     <div class="nav-right">
-      <button><i class="ri-search-line"></i></button>
+      <form id="searchForm" action="/bookpage" method="get">
+          <button type="button" class="search-button" onclick="toggleSearchInput()">
+              <i class="ri-search-line"></i>
+          </button>
+          <input id="searchInput" class="search-input" type="text" name="bookName" placeholder="Enter book name">
+      </form>
       <button id="user"><i class="ri-user-line"></i></button>
       <button><i class="bx bx-heart"></i></button>
       <button><i class="ri-shopping-cart-line"></i></button>
-    </div>
+  </div>
     <br /><br />
   </header>
 
