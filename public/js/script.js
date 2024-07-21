@@ -58,6 +58,20 @@ function hideMenuContainer() {
   }, 500)
 }
 
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.getElementById('fantasy').addEventListener('click', () => {
+    handleButtonClick('fantasy');
+  });
+  document.getElementById('horror').addEventListener('click', () => {
+    handleButtonClick('horror');
+  });
+});
+
+function handleButtonClick(section) {
+  console.log(`Button from ${section} section was clicked`);
+  window.location.href = `localhost8081/allbooks/${section}`;
+}
+
 user.addEventListener("click", () => {
   setTimeout(showContainer, 300); // Show the container and overlay after 300 milliseconds
 });
