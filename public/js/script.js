@@ -65,11 +65,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
   document.getElementById('horror').addEventListener('click', () => {
     handleButtonClick('horror');
   });
+  document.getElementById('fiction').addEventListener('click', () => {
+    handleButtonClick('fiction');
+  });
 });
 
 function handleButtonClick(section) {
   console.log(`Button from ${section} section was clicked`);
-  window.location.href = `localhost8081/allbooks/${section}`;
+  window.location.href = `http://localhost:8081/AllBooks?section=${section}`;
 }
 
 user.addEventListener("click", () => {

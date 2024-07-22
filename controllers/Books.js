@@ -44,3 +44,30 @@ exports.renderHomePage = async (req, res) => {
         res.status(500).send('Error fetching books');
     }
 };
+
+exports.renderAllBooks = async (req, res) => {
+    try {
+        const section = req.query.section;
+        const page = parseInt(req.query.page) || 1;
+        const limit = 10; // 10 books per page (2 rows of 5 books)
+        const skip = (page - 1) * limit;
+
+        let query = {};
+        if (section === "fantasy") {
+            query = { Category: 'Fantasy' };
+        } else if (section === "fiction") {
+            query = { Category: 'Fiction' };
+        } else if (section === "horror") {
+            query = { Category: 'horror' };
+        }
+
+        const allbooks = await Books.find(query).skip(skip).limit(limit);
+        const totalBooks = await Books.countDocuments(query);
+        const totalPages = Math.ceil(totalBooks / limit);
+
+        res.render('AllBooks', { allbooks, totalPages, currentPage: page, section });
+    } catch (err) {
+        console.error('Error fetching books:', err);
+        res.status(500).send('Error fetching books');
+    }
+};
