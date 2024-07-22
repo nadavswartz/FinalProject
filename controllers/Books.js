@@ -49,7 +49,7 @@ exports.renderAllBooks = async (req, res) => {
     try {
         const section = req.query.section;
         const page = parseInt(req.query.page) || 1;
-        const limit = 10; // 10 books per page (2 rows of 5 books)
+        const limit = 15; // 10 books per page (2 rows of 5 books)
         const skip = (page - 1) * limit;
 
         let query = {};
