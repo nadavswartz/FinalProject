@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 function handleButtonClick(section) {
   console.log(`Button from ${section} section was clicked`);
-  window.location.href = `http://localhost:8081/AllBooks?section=${section}`;
+  window.location.href = `/AllBooks?section=${section}`;
 }
 
 user.addEventListener("click", () => {
