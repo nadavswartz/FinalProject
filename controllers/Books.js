@@ -37,8 +37,9 @@ exports.renderHomePage = async (req, res) => {
         const fantasyBooks = await Books.find({ Category: 'Fantasy' });
         const horrorBooks = await Books.find({ Category: 'horror' });
         const fictionBooks = await Books.find({ Category: 'Fiction' });
+        const romanceBooks = await Books.find({ Category: 'romance' });
 
-        res.render('home', { fantasyBooks, horrorBooks, fictionBooks });
+        res.render('home', { fantasyBooks, horrorBooks, fictionBooks, romanceBooks });
     } catch (err) {
         console.error('Error fetching books:', err);
         res.status(500).send('Error fetching books');
@@ -49,7 +50,7 @@ exports.renderAllBooks = async (req, res) => {
     try {
         const section = req.query.section;
         const page = parseInt(req.query.page) || 1;
-        const limit = 15; // 10 books per page (2 rows of 5 books)
+        const limit = 15;
         const skip = (page - 1) * limit;
 
         let query = {};
@@ -59,7 +60,10 @@ exports.renderAllBooks = async (req, res) => {
             query = { Category: 'Fiction' };
         } else if (section === "horror") {
             query = { Category: 'horror' };
-        }
+        } else if (section === "romance") {
+            query = { Category: 'romance' };
+        } 
+        
 
         const allbooks = await Books.find(query).skip(skip).limit(limit);
         const totalBooks = await Books.countDocuments(query);

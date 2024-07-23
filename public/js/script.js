@@ -68,6 +68,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
   document.getElementById('fiction').addEventListener('click', () => {
     handleButtonClick('fiction');
   });
+  document.getElementById('romance').addEventListener('click', () => {
+    handleButtonClick('romance');
+  });
 });
 
 function handleButtonClick(section) {

@@ -109,6 +109,33 @@
               <button id="fiction">View All</button>
           </div>
         </div>
+      </div>
+      
+      <div id="romance-banner"></div>
+      <div class="fantasy">
+        <div class="fantasy-books">
+          <ul class="horizontal-list">
+            <% if (romanceBooks && romanceBooks.length > 0) { %>
+              <% romanceBooks.slice(0, 4).forEach(book => { %>
+                <li>
+                  <h3 class="book-title"><%= book.Book_Name %></h3><br>
+                  <% if (book.Image) { %>
+                    <a href="/bookpage/<%= encodeURIComponent(book.Book_Name) %>">
+                      <img class="bookimg" href="/bookpage/<%= encodeURIComponent(book.Book_Name) %>" src="<%= book.Image %>" alt="<%= book.Book_Name %>">
+                      </a>
+                  <% } %><br>
+                  <p>Author: <%= book.Author %></p>
+                  <p>Release Date: <%= book.Year %></p>
+                </li>
+              <% }) %>
+            <% } else { %>
+              <li>No fantasy books available at the moment.</li>
+            <% } %>
+          </ul>
+          <div class="view-all">
+              <button id="romance">View All</button>
+          </div>
+        </div>
       </div>  
     </ul>
 
