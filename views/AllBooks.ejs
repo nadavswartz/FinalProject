@@ -17,6 +17,27 @@
 
     <%- include('header.ejs') %>
 
+    <div class="radio-input">
+        <label>
+        <input type="radio" id="value-1" name="value-radio" value="value-1">
+        <span>Fantasy</span>
+        </label>
+        <label>
+          <input type="radio" id="value-2" name="value-radio" value="value-2">
+        <span>Horror</span>
+        </label>
+        <label>
+          <input type="radio" id="value-3" name="value-radio" value="value-3">
+        <span>Fiction</span>
+        </label>
+        <label>
+            <input type="radio" id="value-4" name="value-radio" value="value-4">
+        <span>Fantasy</span>
+        </label>
+        <span class="selection"></span>
+      </div>
+
+    <div class="cat-name"><%= section %></div>
     <div class="container">
         <div class="row">
             <% allbooks.forEach((book, index) => { %>
