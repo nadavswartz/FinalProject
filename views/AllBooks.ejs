@@ -19,20 +19,24 @@
 
     <div class="radio-input">
         <label>
-        <input type="radio" id="value-1" name="value-radio" value="value-1">
+        <input type="radio" id="AllBooks" name="value-radio" value="value-1">
+        <span>All Books</span>
+        </label>
+        <label>
+        <input type="radio" id="fantasy" name="value-radio" value="value-2">
         <span>Fantasy</span>
         </label>
         <label>
-          <input type="radio" id="value-2" name="value-radio" value="value-2">
+          <input type="radio" id="horror" name="value-radio" value="value-3">
         <span>Horror</span>
         </label>
         <label>
-          <input type="radio" id="value-3" name="value-radio" value="value-3">
+          <input type="radio" id="fiction" name="value-radio" value="value-4">
         <span>Fiction</span>
         </label>
         <label>
-            <input type="radio" id="value-4" name="value-radio" value="value-4">
-        <span>Fantasy</span>
+            <input type="radio" id="romance" name="value-radio" value="value-5">
+        <span>Romance</span>
         </label>
         <span class="selection"></span>
       </div>
@@ -47,7 +51,7 @@
                 <div class="col-md-2">
                     <a href="/bookpage/<%= encodeURIComponent(book.Book_Name) %>">
                         <img class="bookimg img-fluid" src="<%= book.Image %>" alt="<%= book.Book_Name %>">
-                    </a>
+                    </a><br>
                     <p><%= book.Book_Name %></p>
                 </div>
             <% }); %>

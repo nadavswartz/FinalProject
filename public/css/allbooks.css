@@ -34,7 +34,7 @@
   
   .radio-input label {
     width: 100%;
-    height: calc(var(--container_height) / 4); /* Set the height of each label */
+    height: calc(var(--container_height) / 5); /* Set the height of each label */
     padding: 10px;
     cursor: pointer;
     display: flex;
@@ -51,7 +51,7 @@
     display: none;
     position: absolute;
     width: 100%;
-    height: calc(var(--container_height) / 4); /* Adjust height for vertical layout */
+    height: calc(var(--container_height) / 5); /* Adjust height for vertical layout */
     z-index: 0;
     left: 0;
     top: 0;
@@ -68,18 +68,22 @@
   }
   
   .radio-input label:nth-child(1):has(input:checked) ~ .selection {
-    transform: translateY(calc(var(--container_height) * 0/4)); /* Change to translateY for vertical movement */
+    transform: translateY(calc(var(--container_height) * 0/5)); /* Change to translateY for vertical movement */
   }
   
   .radio-input label:nth-child(2):has(input:checked) ~ .selection {
-    transform: translateY(calc(var(--container_height) * 1/4)); /* Change to translateY for vertical movement */
+    transform: translateY(calc(var(--container_height) * 1/5)); /* Change to translateY for vertical movement */
   }
   
   .radio-input label:nth-child(3):has(input:checked) ~ .selection {
-    transform: translateY(calc(var(--container_height) * 2/4)); /* Change to translateY for vertical movement */
+    transform: translateY(calc(var(--container_height) * 2/5)); /* Change to translateY for vertical movement */
   }
 
   .radio-input label:nth-child(4):has(input:checked) ~ .selection {
-    transform: translateY(calc(var(--container_height) * 3/4)); /* Change to translateY for vertical movement */
+    transform: translateY(calc(var(--container_height) * 3/5)); /* Change to translateY for vertical movement */
+  }
+
+  .radio-input label:nth-child(5):has(input:checked) ~ .selection {
+    transform: translateY(calc(var(--container_height) * 4/5)); /* Change to translateY for vertical movement */
   }
   

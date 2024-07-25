@@ -59,23 +59,51 @@ function hideMenuContainer() {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  document.getElementById('fantasy').addEventListener('click', () => {
-    handleButtonClick('fantasy');
+  document.querySelectorAll('.view-all button').forEach(button => {
+    button.addEventListener('click', () => {
+      const section = button.getAttribute('data-section');
+      handleButtonClick(section);
+    });
   });
-  document.getElementById('horror').addEventListener('click', () => {
-    handleButtonClick('horror');
+
+  // Update radio button selection based on section query parameter
+  const radios = document.querySelectorAll('input[name="value-radio"]');
+  const currentSection = new URLSearchParams(window.location.search).get('section');
+
+  radios.forEach(radio => {
+    if (radio.id === currentSection) {
+      radio.checked = true;
+    }
+    radio.addEventListener('change', () => {
+      handleRadioChange(radio.id);
+    });
   });
-  document.getElementById('fiction').addEventListener('click', () => {
-    handleButtonClick('fiction');
-  });
-  document.getElementById('romance').addEventListener('click', () => {
-    handleButtonClick('romance');
-  });
+
+  // Trigger the selection display update
+  updateSelectionDisplay();
 });
 
 function handleButtonClick(section) {
   console.log(`Button from ${section} section was clicked`);
   window.location.href = `/AllBooks?section=${section}`;
+}
+
+function handleRadioChange(section) {
+  console.log(`Radio button for ${section} section was selected`);
+  window.location.href = `/AllBooks?section=${section}`;
+}
+
+function updateSelectionDisplay() {
+  const selection = document.querySelector('.selection');
+  const checkedRadio = document.querySelector('input[name="value-radio"]:checked');
+  const containerHeight = parseFloat(getComputedStyle(document.querySelector('.radio-input')).getPropertyValue('--container_height'));
+
+  if (checkedRadio) {
+    const index = Array.from(document.querySelectorAll('input[name="value-radio"]')).indexOf(checkedRadio);
+    selection.style.transform = `translateY(calc(${containerHeight} * ${index} / 4))`;
+    selection.style.backgroundColor = 'rgb(11 117 223)';
+    selection.style.display = 'inline-block';
+  }
 }
 
 user.addEventListener("click", () => {
