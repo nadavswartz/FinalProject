@@ -22,4 +22,5 @@ router.get('/branches/add', isAdmin, branchController.showAddBranchForm);
 router.post('/branches/add', isAdmin, branchController.addBranch);
 router.get('/api/branches', branchController.getBranches);
 
+
 module.exports = router;
