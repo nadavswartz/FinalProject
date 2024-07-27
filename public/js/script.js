@@ -50,7 +50,6 @@ function showMenuContainer() {
 }
 
 function hideMenuContainer() {
-<<<<<<< HEAD
   if (overlay && menucontainer) {
     overlay.classList.remove("show");
     menucontainer.classList.remove("show");
@@ -58,77 +57,6 @@ function hideMenuContainer() {
       overlay.classList.add("hide");
       menucontainer.classList.add("hide");
     }, 500);
-=======
-  overlay.classList.remove("show");
-  menucontainer.classList.remove("show");
-  setTimeout(() => {
-    overlay.classList.add("hide");
-    menucontainer.classList.add("hide");
-  }, 500)
-}
-
-document.addEventListener('DOMContentLoaded', (event) => {
-  document.querySelectorAll('.view-all button').forEach(button => {
-    button.addEventListener('click', () => {
-      const section = button.getAttribute('data-section');
-      handleButtonClick(section);
-    });
-  });
-
-  // Update radio button selection based on section query parameter
-  const radios = document.querySelectorAll('input[name="value-radio"]');
-  const currentSection = new URLSearchParams(window.location.search).get('section');
-
-  radios.forEach(radio => {
-    if (radio.id === currentSection) {
-      radio.checked = true;
-    }
-    radio.addEventListener('change', () => {
-      handleRadioChange(radio.id);
-    });
-  });
-
-  // Trigger the selection display update
-  updateSelectionDisplay();
-});
-
-function handleButtonClick(section) {
-  console.log(`Button from ${section} section was clicked`);
-  window.location.href = `/AllBooks?section=${section}`;
-}
-
-function handleRadioChange(section) {
-  console.log(`Radio button for ${section} section was selected`);
-  window.location.href = `/AllBooks?section=${section}`;
-}
-
-function updateSelectionDisplay() {
-  const selection = document.querySelector('.selection');
-  const checkedRadio = document.querySelector('input[name="value-radio"]:checked');
-  const containerHeight = parseFloat(getComputedStyle(document.querySelector('.radio-input')).getPropertyValue('--container_height'));
-
-  if (checkedRadio) {
-    const index = Array.from(document.querySelectorAll('input[name="value-radio"]')).indexOf(checkedRadio);
-    selection.style.transform = `translateY(calc(${containerHeight} * ${index} / 4))`;
-    selection.style.backgroundColor = 'rgb(11 117 223)';
-    selection.style.display = 'inline-block';
-  }
-}
-
-user.addEventListener("click", () => {
-  setTimeout(showContainer, 300); // Show the container and overlay after 300 milliseconds
-});
-
-button.addEventListener("click", () => {
-  setTimeout(hideContainer, 300); // Hide the container and overlay after 300 milliseconds
-});
-
-menubutton.addEventListener("click", () => {
-  if (menucontainer.classList.toggle("hide")) {
-    setTimeout(hideMenuContainer, 100); // Hide the menu container after 100 milliseconds
-  } else {
-    setTimeout(showMenuContainer, 100); // Show the menu container after 100 milliseconds
->>>>>>> 1ddb498d6b4ef837a4d22147403b879e26e1408d
   }
 }
 
