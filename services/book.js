@@ -7,3 +7,15 @@ exports.getILSExchangeRate = async () => {
     const data = await response.json();
     return data.rates.ILS;
 };
+
+exports.addBook = async (Book_Name, Author, Year, Quantity, Category, Description, Image, Price) => {
+    try {
+        const newBook = new Books({ Book_Name, Author, Year, Quantity, Category, Description, Image, Price });
+        await newBook.save();
+        console.log(newBook);
+    } catch (error) {
+        console.error('Error adding book:', error);
+        throw error;
+    }
+};
+

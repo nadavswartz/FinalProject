@@ -16,6 +16,7 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 
   <link rel="stylesheet" href="css/style.css" />
+
 </head>
 
 <body>
@@ -26,15 +27,16 @@
     </a>
     
     <div class="nav-right">
-      <form id="searchForm" action="/bookpage" method="get">
-          <button type="button" class="search-button" onclick="toggleSearchInput()">
-              <i class="ri-search-line"></i>
-          </button>
-          <input id="searchInput" class="search-input" type="text" name="bookName" placeholder="Enter book name">
-      </form>
+      <form id="searchForm" onsubmit="return false;">
+        <button type="button" class="search-button">
+            <i class="ri-search-line"></i>
+        </button>
+        <input id="searchInput" class="search-input" type="text" name="bookName" placeholder="Enter book name">
+    </form>
+    
       <button id="user"><i class="ri-user-line"></i></button>
       <button><i class="bx bx-heart"></i></button>
-      <button><i class="ri-shopping-cart-line"></i></button>
+      <button id="cart-button"><i class="ri-shopping-cart-line"></i></button>
   </div>
     <br /><br />
   </header>
@@ -82,6 +84,6 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="js/script.js"></script>
+<script src="/js/script.js"></script>
 
 </html>

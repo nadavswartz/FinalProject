@@ -4,7 +4,7 @@
 
 // async function insertBooks() {
 //     try {
-//         await mongoose.connect("mongodb+srv://nadavb246:8i9gHONrBUIdWxzm@project1.pbgzyrq.mongodb.net", {
+//         await mongoose.connect("mongodb://localhost", {
 //             useNewUrlParser: true,
 //             useUnifiedTopology: true
 //         });

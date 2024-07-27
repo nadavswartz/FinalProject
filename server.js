@@ -1,13 +1,13 @@
 require('dotenv').config({ path: 'config/.env.local' });
 
-// all the requires
 const mongoose = require('mongoose');
 const express = require('express');
 const session = require('express-session');
-const userRoutes = require('./routes/routes');
+const userRoute = require('./routes/userRoutes');
+const bookRoute = require('./routes/booksRoutes');
 const cors = require('cors');
+const passport = require('passport');
 
-// connect to the DB
 const init = async () => {
     mongoose.connect(process.env.DB_CONNECTION_STRING_db, {
         useUnifiedTopology: true,
@@ -27,10 +27,14 @@ const init = async () => {
         saveUninitialized: false,
       }));
     
+    app.use(passport.initialize());
+    app.use(passport.session());    
+
     app.set('view engine', 'ejs');
     app.set('views', __dirname + '/views');
     
-    app.use(userRoutes);
+    app.use(userRoute);
+    app.use(bookRoute);
     
     const port = process.env.PORT || 3000;
     return app.listen(port, () => {

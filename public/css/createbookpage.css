@@ -1,7 +1,8 @@
-
 body {
-    background-image: url(../img/backgr.jpg);
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
 .banner {
@@ -19,13 +20,12 @@ body {
 
 .banner h1 {
     margin: 0;
+    font-size: 1.5em;
 }
 
 form {
     max-width: 400px;
-    margin: auto;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin: 10% auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
@@ -45,7 +45,6 @@ input {
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    margin: auto;
 }
 
 button {
@@ -56,18 +55,18 @@ button {
     border-radius: 5px;
     cursor: pointer;
     display:block;
-    margin: auto;
+    margin: 20px auto 0;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #92a0af;
 }
 
 #submit {
-    margin: auto;
     margin-top: 2%;
 }
 
-    h1 {
+h1 {
     margin: 30%;
+    font-size: 2em;
 }

@@ -20,7 +20,7 @@ exports.login = async (req, res) => {
         const user = await userService.login(email, password);
         if (user) {
             req.session.userId = user._id;
-            console.log( `user ${user.username} login `, user._id) // for me to see that a user login propartly + user._id
+            console.log( `user ${user.username} login `, req.session.userId) // for me to see that a user login propartly + user._id
             res.redirect('/home');
         } else {
             res.status(401).json({ errors: ['Invalid email or password'] });

@@ -703,9 +703,34 @@ button:active {
 }
 
 .search-input {
-  display: none;
+  display:none;
 }
+
 #searchForm {
   display: flex;
-  align-items: center
+  align-items: center;
+}
+
+#news-ticker-container {
+  width: 100%;
+  overflow: hidden;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+#news-ticker {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll 60s linear infinite;
+}
+
+.news-item {
+  display: inline-block;
+  margin-right: 50px;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); } 
+  100% { transform: translateX(-100%); }
 }
