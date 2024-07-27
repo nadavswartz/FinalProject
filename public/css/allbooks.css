@@ -5,6 +5,8 @@
 }
 
 .cat-name {
+    font-family: fantasy;
+    text-transform: capitalize;
     position: absolute;
     left: 45%;
     top: 13%;
