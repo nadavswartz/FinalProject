@@ -1,0 +1,89 @@
+.container {
+    position: absolute;
+    left: 22%;
+    top: 23%;
+}
+
+.cat-name {
+    position: absolute;
+    left: 45%;
+    top: 13%;
+    font-size: 220%;
+}
+
+
+.radio-input input {
+    display: none;
+  }
+  
+  .radio-input {
+    --container_height: 150px; /* Adjust the height as needed */
+    position: relative; /* Use relative positioning */
+    top: 100px; /* Move the container down */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000000;
+    height: var(--container_height);
+    overflow: hidden;
+    border: 1px solid rgba(53, 52, 52, 0.226);
+    width: 300px; /* You can adjust the width if needed */
+  }
+  
+  .radio-input label {
+    width: 100%;
+    height: calc(var(--container_height) / 5); /* Set the height of each label */
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; /* Adjust to align content vertically */
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    font-weight: 600;
+    letter-spacing: -1px;
+    font-size: 14px;
+  }
+  
+  .selection {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: calc(var(--container_height) / 5); /* Adjust height for vertical layout */
+    z-index: 0;
+    left: 0;
+    top: 0;
+    transition: .15s ease;
+  }
+  
+  .radio-input label:has(input:checked) {
+    color: #fff;
+  }
+  
+  .radio-input label:has(input:checked) ~ .selection {
+    background-color: rgb(11 117 223);
+    display: inline-block;
+  }
+  
+  .radio-input label:nth-child(1):has(input:checked) ~ .selection {
+    transform: translateY(calc(var(--container_height) * 0/5)); /* Change to translateY for vertical movement */
+  }
+  
+  .radio-input label:nth-child(2):has(input:checked) ~ .selection {
+    transform: translateY(calc(var(--container_height) * 1/5)); /* Change to translateY for vertical movement */
+  }
+  
+  .radio-input label:nth-child(3):has(input:checked) ~ .selection {
+    transform: translateY(calc(var(--container_height) * 2/5)); /* Change to translateY for vertical movement */
+  }
+
+  .radio-input label:nth-child(4):has(input:checked) ~ .selection {
+    transform: translateY(calc(var(--container_height) * 3/5)); /* Change to translateY for vertical movement */
+  }
+
+  .radio-input label:nth-child(5):has(input:checked) ~ .selection {
+    transform: translateY(calc(var(--container_height) * 4/5)); /* Change to translateY for vertical movement */
+  }
+  

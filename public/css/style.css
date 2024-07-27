@@ -652,6 +652,29 @@ button:active {
   margin-top: 66px;
 }
 
+#romance-banner {
+  border-radius: 6px;
+  top: 70%;
+  position: relative;
+  left: 12%;
+  background-image: url(../img/romancebanner.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 75%;
+  height: 134px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2em;
+  font-family: Arial, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  margin-bottom: 20px;
+  margin-top: 66px;
+}
+
 #horror-banner {
   border-radius: 6px;
   top: 70%;
