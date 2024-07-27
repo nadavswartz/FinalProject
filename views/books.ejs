@@ -20,15 +20,16 @@
 <body>
     <%- include('header.ejs') %>
 
-    <form action="/books" method="POST" enctype="multipart/form-data">
+    <form action="/books" method="POST">
         <h1>Create A New Book</h1>
 
+        
         <label for="Book_Name">Book Name</label>
         <input type="text" id="Book_Name" name="Book_Name" required>
         <br>
 
         <label for="Author">Author</label>
-        <input type="text" id="Author" name="Author">
+        <input type="text" id="Author" name="Author" required>
         <br>
 
         <label for="Year">Year</label>
@@ -47,15 +48,15 @@
         <input type="text" id="Description" name="Description" required>
         <br>
 
-        <label for="Image">Image URL</label>
+        <label for="Image">ImageUrl</label>
         <input type="text" id="Image" name="Image" required>
         <br>
-
+        
         <label for="Price">Price</label>
-        <input type="number" id="Price" name="Price" step="0.01" required>
+        <input type="number" id="Price" name="Price" required>
         <br>
 
-        <button id="submit" type="submit">Create</button>
+        <button type="submit">Create</button>
     </form>
 </body>
 </html>
