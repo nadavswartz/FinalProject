@@ -3,6 +3,7 @@ const router = express.Router();
 const userController = require('../controllers/user');
 const { isAdmin } = require('../middleware/auth');
 const branchController = require('../controllers/Brunch');
+const paymentController = require('../controllers/Books')
 
 router.get('/register', (req, res) => {
   res.render('register');
@@ -22,5 +23,15 @@ router.get('/branches/add', isAdmin, branchController.showAddBranchForm);
 router.post('/branches/add', isAdmin, branchController.addBranch);
 router.get('/api/branches', branchController.getBranches);
 
+router.get('/checkout', (req, res) => {
+  const cartItems = req.session.cart;
+  res.render('checkout', { cartItems });
+});
+
+router.post('/process-payment', paymentController.processPayment);
+
+router.get('/approved', function(req, res) {
+  res.render('approved');
+});
 
 module.exports = router;

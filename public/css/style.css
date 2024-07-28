@@ -748,6 +748,7 @@ button:active {
   display: inline-block;
   white-space: nowrap;
   animation: scroll 60s linear infinite;
+  margin-top: 0.6%;
 }
 
 .news-item {

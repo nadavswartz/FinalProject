@@ -1,3 +1,5 @@
+// const { response } = require("express");
+
 const container = document.querySelector(".logincontainer"),
   overlay = document.querySelector(".overlay"),
   user = document.getElementById("user"),
@@ -113,21 +115,22 @@ if (images.length > 0) {
   setInterval(nextImage, 7000);
 }
 
+//search input
 function toggleSearchInput() {
   const input = document.getElementById('searchInput');
   const inputValue = input.value.trim();
 
   if (input.style.display === 'none' || input.style.display === '') {
-      input.style.display = 'inline-block';
-      input.focus();
+    input.style.display = 'inline-block';
+    input.focus();
   } else {
-      if (inputValue !== '') {
-          const encodedBookName = encodeURIComponent(inputValue);
-          console.log(`Navigating to /bookpage/${encodedBookName}`);
-          window.location.href = `/bookpage/${encodedBookName}`;
-      } else {
-          resetSearchInput();
-      }
+    if (inputValue !== '') {
+      const encodedBookName = encodeURIComponent(inputValue);
+      console.log(`Navigating to /bookpage/${encodedBookName}`);
+      window.location.href = `/bookpage/${encodedBookName}`;
+    } else {
+      resetSearchInput();
+    }
   }
 }
 
@@ -144,12 +147,13 @@ document.addEventListener('click', function (event) {
   const searchInput = document.getElementById('searchInput');
   const searchButton = document.querySelector('.search-button');
   if (searchInput.style.display !== 'none') {
-      if (!searchInput.contains(event.target) && event.target !== searchButton) {
-          resetSearchInput();
-      }
+    if (!searchInput.contains(event.target) && event.target !== searchButton) {
+      resetSearchInput();
+    }
   }
 });
 
+//cart 
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.btn-53').forEach(button => {
     button.addEventListener('click', function () {
@@ -164,25 +168,24 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         body: JSON.stringify({ bookId }),
       })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Response:', data);
-        if (data.success) {
-          console.log('Book added to cart successfully');
-          window.location.href = '/cart';
-        } else {
-          console.error('Failed to add book to cart:', data.message);
-        }
-      })
-      .catch(error => {
-        console.error('Error adding to cart:', error);
-      });
+        .then(response => response.json())
+        .then(data => {
+          console.log('Response:', data);
+          if (data.success) {
+            console.log('Book added to cart successfully');
+            window.location.href = '/cart';
+          } else {
+            console.error('Failed to add book to cart:', data.message);
+          }
+        })
+        .catch(error => {
+          console.error('Error adding to cart:', error);
+        });
     });
   });
 });
 
-
-
+// news API
 document.addEventListener('DOMContentLoaded', () => {
   const newsTicker = document.getElementById('news-ticker');
   const apiKey = '43f06260ca9f4a97b1c9890e5eeeb679';
@@ -211,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
           newsTicker.appendChild(newsItem);
         });
       } else {
-        newsTicker.innerText = 'No relevant articles found.';
+        newsTicker.innerText = 'No relevant articles found for now.';
       }
     })
     .catch(error => {
@@ -220,6 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// branches fron the DB and display in /about
 function initMap() {
   let map = new google.maps.Map(document.getElementById('map'), {
     zoom: 9,
@@ -292,3 +296,32 @@ function updateSelectionDisplay() {
     selection.style.display = 'inline-block';
   }
 }
+// conferm order
+fetch('/process-payment', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    name: name,
+    cardNumber: cardNumber,
+    expiryDate: expiryDate,
+    cvv: cvv,
+  }),
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.text();
+  })
+  .then(responseText => {
+    if (responseText.trim().toLowerCase() !== 'payment processed successfully'.toLowerCase()) {
+      throw new Error('Server response was not OK');
+    }
+    alert('Your order will be delivered to you in 3 days, see you soon!');
+    window.location.href = '/home';
+  })
+  .catch(error => {
+    console.error('There has been a problem with your fetch operation:', error);
+  });

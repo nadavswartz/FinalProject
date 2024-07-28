@@ -1,5 +1,7 @@
 const bookService = require('../services/book');
 const Books = require('../models/Books');
+const { render } = require('ejs');
+
 
 exports.addBook = async (req, res) => {
     try {
@@ -117,4 +119,20 @@ exports.addToCart = async (req, res) => {
       throw err;
     }
   };
-  
+
+exports.processPayment = (req, res) => {
+    const { name, cardNumber, expiryDate, cvv } = req.body;
+
+    if (!bookService.validateFormData(name, cardNumber, expiryDate, cvv)) {
+        res.status(400).send('Invalid form data');
+        return;
+    }
+    bookService.processPayment(name, cardNumber, expiryDate, cvv)
+        .then(() => {
+            res.render('approved');
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(500).send('Server Error');
+        });
+};

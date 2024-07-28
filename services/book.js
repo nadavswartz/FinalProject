@@ -19,3 +19,21 @@ exports.addBook = async (Book_Name, Author, Year, Quantity, Category, Descriptio
     }
 };
 
+exports.processPayment = async (cartItems) => {
+    for (let item of cartItems) {
+        if (!item.book) {
+            console.error('Item does not have a book property:', item);
+            continue;
+        }
+        const book = await Books.findById(item.book._id);
+        Books.Quantity -= item.Quantity;
+        await book.save();
+    }
+};
+
+exports.validateFormData = (name, cardNumber, expiryDate, cvv) => {
+    if (!name || !cardNumber || !expiryDate || !cvv) {
+        return false;
+    }
+    return true;
+};
