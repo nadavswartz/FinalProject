@@ -53,20 +53,41 @@ exports.renderAllBooks = async (req, res) => {
         const limit = 15;
         const skip = (page - 1) * limit;
 
-        let query = {};
+        let matchQuery = {};
         if (section === "fantasy") {
-            query = { Category: 'Fantasy' };
+            matchQuery = { Category: 'Fantasy' };
         } else if (section === "fiction") {
-            query = { Category: 'Fiction' };
+            matchQuery = { Category: 'Fiction' };
         } else if (section === "horror") {
-            query = { Category: 'horror' };
+            matchQuery = { Category: 'horror' };
         } else if (section === "romance") {
-            query = { Category: 'romance' };
+            matchQuery = { Category: 'romance' };
         } 
-        
 
-        const allbooks = await Books.find(query).skip(skip).limit(limit);
-        const totalBooks = await Books.countDocuments(query);
+        const aggregateQuery = [
+            { $match: matchQuery },
+            { $group: {
+                _id: "$Book_Name",
+                Book_Name: { $first: "$Book_Name" },
+                Image: { $first: "$Image" },
+                Category: { $first: "$Category" },
+            }},
+            { $skip: skip },
+            { $limit: limit }
+        ];
+
+        const totalBooksQuery = [
+            { $match: matchQuery },
+            { $group: { _id: "$Book_Name" } },
+            { $count: "totalBooks" }
+        ];
+
+        const [allbooks, totalBooksResult] = await Promise.all([
+            Books.aggregate(aggregateQuery),
+            Books.aggregate(totalBooksQuery)
+        ]);
+
+        const totalBooks = totalBooksResult[0] ? totalBooksResult[0].totalBooks : 0;
         const totalPages = Math.ceil(totalBooks / limit);
 
         res.render('AllBooks', { allbooks, totalPages, currentPage: page, section });
