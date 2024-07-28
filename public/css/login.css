@@ -1,7 +1,6 @@
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100vh;
     margin: 0;
     background: linear-gradient(to right, #f0f0f0, #ffffff);
