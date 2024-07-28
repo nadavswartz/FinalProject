@@ -8,6 +8,7 @@ const { isAdmin } = require('../middleware/auth');
 router.get('/home', bookController.renderHomePage);
 
 router.get('/bookpage/:Book_Name', bookController.renderBookPage);
+router.get('/AllBooks', bookController.renderAllBooks);
 
 router.get('/books',isAdmin, (req, res) => {
   res.render('books'); 
