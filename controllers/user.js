@@ -45,3 +45,14 @@ exports.home = async (req, res) => {
     }
 };
 
+exports.renderAdminDashboard = async (req, res) => {
+    try {
+        if (!req.session.userId) {
+            return res.redirect('/login');
+        }
+        // Fetch data for charts, etc. here
+        res.render('adminDashboard');
+    } catch (error) {
+        res.status(500).json({ errors: [error.message] });
+    }
+};

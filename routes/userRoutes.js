@@ -34,4 +34,6 @@ router.get('/approved', function(req, res) {
   res.render('approved');
 });
 
+router.get('/admin/dashboard', isAdmin, userController.renderAdminDashboard);
+
 module.exports = router;

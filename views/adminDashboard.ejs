@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="admin-dashboard">
+    <!-- <%- include('header.ejs') %> -->
+    <main>
+        <h1>Admin Dashboard</h1>
+        <section class="dashboard-container">
+            <div class="dashboard-link">
+                <h2>Add Books</h2>
+                <p>Click here to manage books.</p>
+                <a href="/books">Go to Books</a>
+            </div>
+            <div class="dashboard-link">
+                <h2>Delete Books</h2>
+                <p>Click here to delete books.</p>
+                <a href="/books/delete">Delete Books</a>
+            </div>
+            <div class="dashboard-link">
+                <h2>Add branch</h2>
+                <p>Click here to add brunch.</p>
+                <a href="/branches/add">Add branch</a>
+            </div>
+        </section>
+        <section class="dashboard-chart"></section>
+            <h2>Client Buys</h2>
+            <div id="clientBuysChart"></div>
+            <h2>Staff Performance</h2>
+            <div id="staffPerformanceChart"></div>
+        </section>
+    </main>
+</body>
+</html>

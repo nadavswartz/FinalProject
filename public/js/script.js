@@ -117,7 +117,7 @@ if (images.length > 0) {
 
 //search input
 function toggleSearchInput() {
-  const input = document.getElementById('searchInput');
+  const input = document.getElementById('sInput');
   const inputValue = input.value.trim();
 
   if (input.style.display === 'none' || input.style.display === '') {
@@ -135,7 +135,7 @@ function toggleSearchInput() {
 }
 
 function resetSearchInput() {
-  const input = document.getElementById('searchInput');
+  const input = document.getElementById('sInput');
   input.style.display = 'none';
   input.value = '';
 }
@@ -144,7 +144,7 @@ const searchButton = document.querySelector('.search-button');
 searchButton.addEventListener('click', toggleSearchInput);
 
 document.addEventListener('click', function (event) {
-  const searchInput = document.getElementById('searchInput');
+  const searchInput = document.getElementById('sInput');
   const searchButton = document.querySelector('.search-button');
   if (searchInput.style.display !== 'none') {
     if (!searchInput.contains(event.target) && event.target !== searchButton) {

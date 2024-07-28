@@ -118,7 +118,8 @@ exports.addToCart = async (req, res) => {
       console.error(err);
       throw err;
     }
-  };
+  
+};
 
 exports.processPayment = (req, res) => {
     const { name, cardNumber, expiryDate, cvv } = req.body;
@@ -134,5 +135,17 @@ exports.processPayment = (req, res) => {
         .catch(error => {
             console.error(error);
             res.status(500).send('Server Error');
-        });
+         });    
+};
+
+exports.deleteBook = async (req, res) => {
+    try {
+        const { Book_Name } = req.body;
+    
+        await bookService.deletebook(Book_Name);
+        res.redirect('/books/delete');
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ errors: [error.message] });
+    }
 };

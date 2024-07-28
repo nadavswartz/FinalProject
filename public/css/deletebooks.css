@@ -5,24 +5,7 @@ body {
     background-color: #f4f4f4;
 }
 
-.banner {
-    background-color: #007BFF;
-    height: 60px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-.banner h1 {
-    font-size: 1.5em;
-}
-
-#bookCreator-form {
+#bookdelete-form {
     max-width: 400px;
     margin: 10% auto;
     padding: 20px;
@@ -31,13 +14,19 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#bookCreator-form label {
+#bookdelete-form h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#bookdelete-form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-#bookCreator-form input {
+#bookdelete-form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -46,7 +35,7 @@ body {
     box-sizing: border-box;
 }
 
-#bookCreator-form button {
+#bookdelete-form button {
     padding: 10px 20px;
     background-color: #007BFF;
     color: #fff;
@@ -57,17 +46,6 @@ body {
     margin: 20px auto 0;
 }
 
-#bookCreator-form button:hover {
+#bookdelete-form button:hover {
     background-color: #92a0af;
-}
-
-#submit {
-    margin-top: 2%;
-}
-
-h1 {
-    margin-top: 10%;
-    font-size: 2em;
-    margin: 10%;
-    margin-bottom: 5%;
 }

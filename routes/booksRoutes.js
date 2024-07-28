@@ -15,9 +15,13 @@ router.get('/books',isAdmin, (req, res) => {
 });
 router.post('/books',isAdmin, bookController.addBook);
 
+router.get('/books/delete',isAdmin, (req, res) => {
+  res.render('deleteBooks'); 
+});
+router.post('/books/delete',isAdmin, bookController.deleteBook);
+
+
 router.get('/cart', isAuthenticated, bookController.renderCartPage);
 router.post('/cart', isAuthenticated, bookController.addToCart);
-
-
 
 module.exports = router;

@@ -37,3 +37,13 @@ exports.validateFormData = (name, cardNumber, expiryDate, cvv) => {
     }
     return true;
 };
+
+exports.deletebook = async (Book_Name) => {
+    try {
+        const bookToDelete = Books.findOne({Book_Name})
+        await bookToDelete .deleteOne();
+    } catch (error) {
+        console.error('Error delete book:', error);
+        throw error;
+    }
+};
