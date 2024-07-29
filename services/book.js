@@ -11,8 +11,9 @@ exports.getILSExchangeRate = async () => {
 exports.addBook = async (Book_Name, Author, Year, Quantity, Category, Description, Image, Price) => {
     try {
         const newBook = new Books({ Book_Name, Author, Year, Quantity, Category, Description, Image, Price });
-        await newBook.save();
-        console.log(newBook);
+        const savedBook = await newBook.save();
+        console.log('Book saved:', savedBook);
+        return savedBook;
     } catch (error) {
         console.error('Error adding book:', error);
         throw error;

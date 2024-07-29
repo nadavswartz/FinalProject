@@ -43,4 +43,13 @@ router.use((err, req, res, next) => {
     res.render('error', { errorCode: err.status || 500, errorMessage: err.message });
 });
 
+router.post('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/home');
+  });
+});
+
 module.exports = router;
