@@ -7,10 +7,13 @@
 <body class="admin-dashboard">
     <!-- <%- include('header.ejs') %> -->
     <main>
-        <h1>Admin Dashboard</h1>
+        <div class="greeting">
+            <h1>Hello, Admin!</h1>
+            <p>Welcome back to your dashboard.</p>
+        </div>
         <section class="dashboard-container">
             <div class="dashboard-link">
-                <h2>Add Books</h2>
+                <h2>Manage Books</h2>
                 <p>Click here to manage books.</p>
                 <a href="/books">Go to Books</a>
             </div>
@@ -20,16 +23,20 @@
                 <a href="/books/delete">Delete Books</a>
             </div>
             <div class="dashboard-link">
-                <h2>Add branch</h2>
+                <h2>Delete Brunch</h2>
+                <p>Click here to delete brunch.</p>
+                <a href="/brunch/delete">Delete Brunch</a>
+            </div>
+            <div class="dashboard-link">
+                <h2>Add Brunch</h2>
                 <p>Click here to add brunch.</p>
-                <a href="/branches/add">Add branch</a>
+                <a href="/branches/add">Add Brunch</a>
             </div>
         </section>
-        <section class="dashboard-chart"></section>
+        <section class="dashboard-chart">
+           <!-- //charts -->
             <h2>Client Buys</h2>
             <div id="clientBuysChart"></div>
-            <h2>Staff Performance</h2>
-            <div id="staffPerformanceChart"></div>
         </section>
     </main>
 </body>

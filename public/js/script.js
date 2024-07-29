@@ -158,9 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.btn-53').forEach(button => {
     button.addEventListener('click', function () {
       const bookId = this.getAttribute('data-id');
-      console.log('Button clicked');
-      console.log('Book ID:', bookId);
-
+  
       fetch('/cart', {
         method: 'POST',
         headers: {
@@ -189,11 +187,11 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', () => {
   const newsTicker = document.getElementById('news-ticker');
   const apiKey = '43f06260ca9f4a97b1c9890e5eeeb679';
-  const endpoint = `https://newsapi.org/v2/everything?q=book+reviews OR book+recommendations&apiKey=${apiKey}`;
+  const endpoint = `https://newsapi.org/v2/everything?q=book+recommendations&apiKey=${apiKey}`;
   fetch(endpoint)
     .then(response => response.json())
     .then(data => {
-      const articles = data.articles.slice(0, 10);
+      const articles = data.articles.slice(0, 7);
 
       if (articles.length > 0) {
         articles.forEach(article => {

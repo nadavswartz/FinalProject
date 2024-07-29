@@ -1,5 +1,5 @@
 body.admin-dashboard {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -9,6 +9,9 @@ body.admin-dashboard {
     width: 90%;
     margin: auto;
     padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .admin-dashboard .dashboard-container {
@@ -21,10 +24,16 @@ body.admin-dashboard {
 .admin-dashboard .dashboard-link {
     width: 45%;
     padding: 20px;
-    background-color: #fff;
+    background-color: #007BFF;
+    color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.admin-dashboard .dashboard-link:hover {
+    background-color: #0056b3;
 }
 
 .admin-dashboard .dashboard-link a {
@@ -33,12 +42,11 @@ body.admin-dashboard {
     padding: 10px 20px;
     text-decoration: none;
     color: #fff;
-    background-color: #007BFF;
-    border-radius: 5px;
+    transition: color 0.3s ease;
 }
 
 .admin-dashboard .dashboard-link a:hover {
-    background-color: #0056b3;
+    color: #f4f4f4;
 }
 
 .admin-dashboard .dashboard-chart {
@@ -46,4 +54,21 @@ body.admin-dashboard {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-dashboard .greeting {
+    padding: 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.admin-dashboard .greeting h1 {
+    margin: 0;
+}
+
+.admin-dashboard .greeting p {
+    margin: 0;
+    font-size: 1.2em;
 }
