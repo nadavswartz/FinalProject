@@ -1,19 +1,32 @@
 const bookService = require('../services/book');
 const Books = require('../models/Books');
 const { render } = require('ejs');
-
+const { postTweet } = require('../services/twitterService');
 
 exports.addBook = async (req, res, next) => {
     try {
-        const { Book_Name, Author, Year, Quantity, Category, Description, Image, Price } = req.body;
+      const { Book_Name, Author, Year, Quantity, Category, Description, Image, Price } = req.body;
+      const newBook = await bookService.addBook(Book_Name, Author, Year, Quantity, Category, Description, Image, Price);
     
-        await bookService.addBook(Book_Name, Author, Year, Quantity, Category, Description, Image, Price);
-        res.redirect('/books');
+      const tweetContent = `📚 New Arrivall book!!! 
+      Book: "${Book_Name}" 
+      Author: ${Author} 
+      Year: ${Year} 
+      Category: ${Category} 
+      Description: ${Description} 
+      Image: ${Image}
+  
+      Check it out! #NewBook #${Category}`;
+  
+      await postTweet(tweetContent);
+  
+      res.redirect('/books');
     } catch (error) {
-        next(error);
+      next(error);
     }
-};
+  };
 
+  
 exports.renderBookPage = async (req, res, next) => {
     try {
         const Book_Name = req.params.Book_Name;
