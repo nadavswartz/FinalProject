@@ -1,43 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/dashboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
 </head>
-<body class="admin-dashboard">
-    <!-- <%- include('header.ejs') %> -->
-    <main>
-        <div class="greeting">
-            <h1>Hello, Admin!</h1>
-            <p>Welcome back to your dashboard.</p>
+
+<body>
+    <%- include ('header.ejs') %>
+
+        <div class="main-container">
+            <div class="container d-flex">
+                <div class="content">
+                    <h1>Hello, Admin!</h1>
+                    <p class="bold-text">Welcome back to your dashboard</p>
+                    <br>
+                    <section class="dashboard-container">
+                        <div class="dashboard-link">
+                            <p class="bold-text">Manage Books</p>
+                            <!-- <p>Click here to manage books.</p> -->
+                            <a href="/books">Click here to manage books</a>
+                        </div>
+                        <br>
+                        <div class="dashboard-link">
+                            <p class="bold-text">Delete Books</p>
+                            <!-- <p>Click here to delete books.</p> -->
+                            <a href="/books/delete">Click here to delete books</a>
+                        </div>
+                        <br>
+                        <div class="dashboard-link">
+                            <p class="bold-text">Delete Brunch</p>
+                            <!-- <p>Click here to delete brunch.</p> -->
+                            <a href="/brunch/delete">Click here to delete branch</a>
+                        </div>
+                        <br>
+                        <div class="dashboard-link">
+                            <p class="bold-text">Add Brunch</p>
+                            <!-- <p>Click here to add brunch.</p> -->
+                            <a href="/branches/add">Click here to add brunch</a>
+                        </div>
+                        <br><br>
+                    </section>
+                    <section class="dashboard-chart">
+                        <!-- //charts -->
+                        <p class="bold-text">Client Buys</p>
+                        <div id="clientBuysChart"></div>
+                    </section>
+
+                </div>
+                <div id="map"></div>
+            </div>
         </div>
-        <section class="dashboard-container">
-            <div class="dashboard-link">
-                <h2>Manage Books</h2>
-                <p>Click here to manage books.</p>
-                <a href="/books">Go to Books</a>
-            </div>
-            <div class="dashboard-link">
-                <h2>Delete Books</h2>
-                <p>Click here to delete books.</p>
-                <a href="/books/delete">Delete Books</a>
-            </div>
-            <div class="dashboard-link">
-                <h2>Delete Brunch</h2>
-                <p>Click here to delete brunch.</p>
-                <a href="/brunch/delete">Delete Brunch</a>
-            </div>
-            <div class="dashboard-link">
-                <h2>Add Brunch</h2>
-                <p>Click here to add brunch.</p>
-                <a href="/branches/add">Add Brunch</a>
-            </div>
-        </section>
-        <section class="dashboard-chart">
-           <!-- //charts -->
-            <h2>Client Buys</h2>
-            <div id="clientBuysChart"></div>
-        </section>
-    </main>
+        </div>
 </body>
+
 </html>
