@@ -49,39 +49,51 @@
     <a href="/about" class="menu-cat">Contact</a><br>
   </div>
 
-  <button id="floating-button" class="floating-button hide"><i class="bx bx-x"></i></button>
-  <div class="overlay hide"></div>
-  <div class="logincontainer hide">
-    <div class="forms">
-      <div class="form login">
-        <span class="title">Login</span>
-        <form action="/login" method="post">
-          <div class="input-field">
-            <input type="email" id="email" name="email" placeholder="Enter your email" required/>
-            <i class="uil uil-envelope icon"></i>
-          </div>
-          <div class="input-field">
-            <input type="password" class="password" id="Password" name="password" placeholder="Enter your password" required/>
-            <i class="uil uil-lock icon"></i>
-            <i class="uil uil-eye-slash showHidePw"></i>
-          </div>
-          <div class="checkbox-text">
-            <div class="checkbox-content">
-              <input type="checkbox" id="logCheck" />
-              <label for="logCheck" class="text">Remember me</label>
+  <% if (typeof user !== 'undefined' && user) { %>
+    <button id="floating-button" class="floating-button hide"><i class="bx bx-x"></i></button>
+    <div class="overlay hide"></div>
+    <div class="logout-container hide">
+      <div class="logout-text">Welcome, <%= user.username %>!</div>
+      <form action="/logout" method="post" style="display:inline;">
+        <button id="order">My Orders</button>
+        <button type="submit">Logout</button>
+      </form>
+  </div>
+  <% } else { %>
+    <button id="floating-button" class="floating-button hide"><i class="bx bx-x"></i></button>
+    <div class="overlay hide"></div>
+    <div class="logincontainer hide">
+      <div class="forms">
+        <div class="form login">
+          <span class="title">Login</span>
+          <form action="/login" method="post">
+            <div class="input-field">
+              <input type="email" id="email" name="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope icon"></i>
             </div>
-            <a href="#" class="text">Forgot password?</a>
+            <div class="input-field">
+              <input type="password" class="password" id="Password" name="password" placeholder="Enter your password" required />
+              <i class="uil uil-lock icon"></i>
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
+            <div class="checkbox-text">
+              <div class="checkbox-content">
+                <input type="checkbox" id="logCheck" />
+                <label for="logCheck" class="text">Remember me</label>
+              </div>
+              <a href="#" class="text">Forgot password?</a>
+            </div>
+            <div class="input-field button">
+              <input type="submit" value="Login" />
+            </div>
+          </form>
+          <div class="login-signup">
+            <span class="text">Not a member? <a href="/register" class="text signup-link">Signup Now</a></span>
           </div>
-          <div class="input-field button">
-            <input type="submit" value="Login"/>
-          </div>
-        </form>
-        <div class="login-signup">
-          <span class="text">Not a member? <a href="/register" class="text signup-link">Signup Now</a></span>
         </div>
       </div>
     </div>
-  </div>
+  <% } %>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

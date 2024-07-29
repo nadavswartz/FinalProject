@@ -7,6 +7,7 @@ const userRoute = require('./routes/userRoutes');
 const bookRoute = require('./routes/booksRoutes');
 const cors = require('cors');
 const passport = require('passport');
+const { setUserLocals } = require('./middleware/auth');
 
 const init = async () => {
     mongoose.connect(process.env.DB_CONNECTION_STRING_db, {
@@ -26,6 +27,8 @@ const init = async () => {
         resave: false,
         saveUninitialized: false,
       }));
+
+    app.use(setUserLocals);
     
     app.use(passport.initialize());
     app.use(passport.session());    

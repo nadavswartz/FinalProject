@@ -28,4 +28,9 @@ const passportMiddleware = (req, res, next) => {
   })(req, res, next);
 };
 
-module.exports = { isAuthenticated, isAdmin, passportMiddleware };
+const setUserLocals = (req, res, next) => {
+  res.locals.user = req.session.userId ? { _id: req.session.userId, username: req.session.username } : null;
+  next();
+};
+
+module.exports = { isAuthenticated, isAdmin, passportMiddleware, setUserLocals  };
