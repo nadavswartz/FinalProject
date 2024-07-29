@@ -7,7 +7,10 @@ const container = document.querySelector(".logincontainer"),
   menubutton = document.getElementById("menu-button"),
   menucontainer = document.querySelector(".menu-container"),
   pwShowHide = document.querySelectorAll(".showHidePw"),
-  pwFields = document.querySelectorAll(".password");
+  pwFields = document.querySelectorAll(".password"),
+  logout = document.querySelector(".logout-container"),
+  order = document.getElementById("order");
+
 
 function showContainer() {
   if (overlay && container && button) {
@@ -19,6 +22,18 @@ function showContainer() {
     setTimeout(() => {
       overlay.classList.add("show");
       container.classList.add("show");
+      button.classList.add("show");
+    }, 100);
+  }
+  if (overlay && logout && button) {
+    overlay.classList.remove("hide");
+    logout.classList.remove("hide");
+    button.classList.remove("hide");
+    var head = document.getElementById("header");
+    if (head) head.style.background = 'rgba(0, 0, 0, 0)';
+    setTimeout(() => {
+      overlay.classList.add("show");
+      logout.classList.add("show");
       button.classList.add("show");
     }, 100);
   }
@@ -34,6 +49,18 @@ function hideContainer() {
     setTimeout(() => {
       overlay.classList.add("hide");
       container.classList.add("hide");
+      button.classList.add("hide");
+    }, 500);
+  }
+  if (overlay && logout && button) {
+    overlay.classList.remove("show");
+    logout.classList.remove("show");
+    button.classList.remove("show");
+    var head = document.getElementById("header");
+    if (head) head.style.background = 'var(--bg-color)';
+    setTimeout(() => {
+      overlay.classList.add("hide");
+      logout.classList.add("hide");
       button.classList.add("hide");
     }, 500);
   }

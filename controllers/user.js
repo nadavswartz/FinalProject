@@ -16,21 +16,22 @@ exports.register = async (req, res, next) => {
 // use the login function in services and redirect the user to home page
 exports.login = async (req, res, next) => {
     try {
-        const { email, password } = req.body;
-        const user = await userService.login(email, password);
-        if (user) {
-            req.session.userId = user._id;
-            console.log( `user ${user.username} login `, req.session.userId) // for me to see that a user login propartly + user._id
-            res.redirect('/home');
-        } else {
-            const err = new Error('Invalid email or password');
-            err.status = 401;
-            next(err);
-        }
+      const { email, password } = req.body;
+      const user = await userService.login(email, password);
+      if (user) {
+        req.session.userId = user._id;
+        req.session.username = user.username; // Store the username in the session
+        console.log(`User ${user.username} logged in, session ID: ${req.session.userId}`);
+        res.redirect('/home');
+      } else {
+        const err = new Error('Invalid email or password');
+        err.status = 401;
+        next(err);
+      }
     } catch (error) {
-        next(error);
+      next(error);
     }
-};
+  };
 
 exports.home = async (req, res, next) => {
     try {
@@ -62,3 +63,4 @@ exports.renderAdminDashboard = async (req, res, next) => {
         next(error);
     }
 };
+
