@@ -2,19 +2,19 @@ const userService = require('../services/user');
 const User = require('../models/users');
 
 //register function - gets all the values and redirect to /login
-exports.register = async (req, res) => {
+exports.register = async (req, res, next) => {
     try {
         const { username, password, email, firstname, lastname, address, city, zipcode, phonenumber, housenumber, floor} = req.body;
         await userService.register(username, password, email, firstname, lastname, address, city, zipcode, phonenumber, housenumber, floor);
         console.log( `${username} register now`) // for me to see that a user register propartly
         res.redirect('/login');
     } catch (error) {
-        res.status(500).json({ errors: [error.message] });
+        next(error);
     }
 };
 
 // use the login function in services and redirect the user to home page
-exports.login = async (req, res) => {
+exports.login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
         const user = await userService.login(email, password);
@@ -23,29 +23,35 @@ exports.login = async (req, res) => {
             console.log( `user ${user.username} login `, req.session.userId) // for me to see that a user login propartly + user._id
             res.redirect('/home');
         } else {
-            res.status(401).json({ errors: ['Invalid email or password'] });
+            const err = new Error('Invalid email or password');
+            err.status = 401;
+            next(err);
         }
     } catch (error) {
-        res.status(500).json({ errors: [error.message] });
+        next(error);
     }
 };
 
-exports.home = async (req, res) => {
+exports.home = async (req, res, next) => {
     try {
         if (!req.session.userId) {
-            return res.status(401).json({ errors: ['Unauthorized'] });
+            const err = new Error('Unauthorized');
+            err.status = 401;
+            return next(err);
         }
         const user = await User.findById(req.session.userId);
         if (!user) {
-            return res.status(404).json({ errors: ['User not found'] });
+            const err = new Error('User not found');
+            err.status = 404;
+            return next(err);
         }
         res.render('home', {user});
     } catch (error) {   
-        res.status(500).json({ errors: [error.message] });
+        next(error);
     }
 };
 
-exports.renderAdminDashboard = async (req, res) => {
+exports.renderAdminDashboard = async (req, res, next) => {
     try {
         if (!req.session.userId) {
             return res.redirect('/login');
@@ -53,6 +59,6 @@ exports.renderAdminDashboard = async (req, res) => {
         // Fetch data for charts, etc. here
         res.render('adminDashboard');
     } catch (error) {
-        res.status(500).json({ errors: [error.message] });
+        next(error);
     }
 };

@@ -3,32 +3,32 @@ const Books = require('../models/Books');
 const { render } = require('ejs');
 
 
-exports.addBook = async (req, res) => {
+exports.addBook = async (req, res, next) => {
     try {
         const { Book_Name, Author, Year, Quantity, Category, Description, Image, Price } = req.body;
     
         await bookService.addBook(Book_Name, Author, Year, Quantity, Category, Description, Image, Price);
         res.redirect('/books');
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ errors: [error.message] });
+        next(error);
     }
 };
 
-exports.renderBookPage = async (req, res) => {
+exports.renderBookPage = async (req, res, next) => {
     try {
         const Book_Name = req.params.Book_Name;
         const book = await Books.findOne({ Book_Name: Book_Name });
         if (!book) {
-            return res.render('bookpage', { book: null });
+            const err = new Error('Book not found');
+            err.status = 404;
+            return next(err);
         }
 
         const exchangeRate = await bookService.getILSExchangeRate();
         
         res.render('bookpage', { book, exchangeRate });
-    } catch (err) {
-        console.error('Error fetching book:', err);
-        res.status(500).send('Error uploading book');
+    } catch (error) {
+        next(error);
     }
 };
 

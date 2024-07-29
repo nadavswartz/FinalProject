@@ -19,6 +19,8 @@ router.get('/about', (req, res) => {
   res.render('about');
 });
 
+
+
 router.get('/branches/add', isAdmin, branchController.showAddBranchForm);
 router.post('/branches/add', isAdmin, branchController.addBranch);
 router.get('/api/branches', branchController.getBranches);
@@ -35,5 +37,10 @@ router.get('/approved', function(req, res) {
 });
 
 router.get('/admin/dashboard', isAdmin, userController.renderAdminDashboard);
+
+router.use((err, req, res, next) => {
+    res.status(err.status || 500);
+    res.render('error', { errorCode: err.status || 500, errorMessage: err.message });
+});
 
 module.exports = router;
