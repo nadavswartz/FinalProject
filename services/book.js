@@ -37,6 +37,7 @@ exports.addBook = async (Book_Name, Author, Year, Quantity, Category, Descriptio
 };
 
 exports.processPayment = async (cartItems) => {
+    console.log(cartItems);
     for (let item of cartItems) {
         if (!item.book) {
             console.error('Item does not have a book property:', item);

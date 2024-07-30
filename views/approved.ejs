@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Payment Approved</title>
-    <link rel="stylesheet" href="css/approved">
+    <link rel="stylesheet" href="css/approved.css">
 </head>
+
 <body>
     <%- include('header.ejs') %>
-    <br>
-    <h1>Your payment has been approved!</h1>
-    <p>Thank you for your purchase. Your order will be delivered to you in 3 days.</p>
-    <a href="/home">Go back to Home Page</a>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
+        <br>
+        <div class="approvedConteiner">
+            <h1>Your payment has been approved!</h1>
+            <p>Thank you for your purchase. Your order will be delivered to you in 3 days.</p>
+            <a href="/home">Go back to Home Page</a>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <script src="js/script.js"></script>
 </body>
+
 </html>

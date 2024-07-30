@@ -153,7 +153,12 @@ exports.processPayment = (req, res) => {
     }
     bookService.processPayment(name, cardNumber, expiryDate, cvv)
         .then(() => {
-            res.render('approved');
+            req.session.destroy((err) => {
+                if (err) {
+                  return next(err); 
+                }
+                res.render('approved');
+              });
         })
         .catch(error => {
             console.error(error);
