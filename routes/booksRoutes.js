@@ -20,6 +20,11 @@ router.get('/books/delete',isAdmin, (req, res) => {
 });
 router.post('/books/delete',isAdmin, bookController.deleteBook);
 
+router.get('/books/update',isAdmin, (req, res) => {
+  res.render('updateBooks'); 
+});
+router.post('/books/update',isAdmin, bookController.updateBook);
+
 
 router.get('/cart', isAuthenticated, bookController.renderCartPage);
 router.post('/cart', isAuthenticated, bookController.addToCart);

@@ -1,25 +1,14 @@
 const bookService = require('../services/book');
 const Books = require('../models/Books');
 const { render } = require('ejs');
-const { postTweet } = require('../services/twitterService');
+const { postTweet, generateTweetContent } = require('../services/twitterService');
 
 exports.addBook = async (req, res, next) => {
     try {
       const { Book_Name, Author, Year, Quantity, Category, Description, Image, Price } = req.body;
       const newBook = await bookService.addBook(Book_Name, Author, Year, Quantity, Category, Description, Image, Price);
-    
-      const tweetContent = `📚 New Arrivall book!!! 
-      Book: "${Book_Name}" 
-      Author: ${Author} 
-      Year: ${Year} 
-      Category: ${Category} 
-      Description: ${Description} 
-      Image: ${Image}
-  
-      Check it out! #NewBook #${Category}`;
-  
+      const tweetContent = generateTweetContent(Book_Name, Author, Year, Category, Description, Image);
       await postTweet(tweetContent);
-  
       res.redirect('/books');
     } catch (error) {
       next(error);
@@ -183,3 +172,13 @@ exports.deleteBook = async (req, res) => {
         res.status(500).json({ errors: [error.message] });
     }
 };
+
+exports.updateBook = async (req, res, next) => {
+    try {
+      const { Book_Name, Author, Year, Quantity, Category, Description, Image, Price } = req.body;
+      const updateBook = await bookService.updateBook(Book_Name, Author, Year, Quantity, Category, Description, Image, Price);
+      res.redirect('/books/update');
+    } catch (error) {
+      next(error);
+    }
+  };

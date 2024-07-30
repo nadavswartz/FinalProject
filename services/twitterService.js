@@ -1,10 +1,10 @@
 const { TwitterApi } = require('twitter-api-v2');
 
 const client = new TwitterApi({
-  appKey: 'fo4Le7wuFhn7Wdg0wnjIRadRf',
-  appSecret: 'kMuYBvuelutqDGB74F7hl92aHgPFSDyqKj7rspNbKlO9CWIqFZ',
-  accessToken: '1817894233342148608-CKw1AWPHH6JGGG0FU4r5V9IHusVd3T',
-  accessSecret: 'p32ICWGBYb3FYl1VuXtaRpT8Fysn3gu2PRBeLtyTf7vfw',
+  appKey: process.env.TWITTER_API_KEY,
+  appSecret: process.env.TWITTER_API_SECRET_KEY,
+  accessToken: process.env.TWITTER_ACCESS_TOKEN,
+  accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
 const postTweet = async (status) => {
@@ -17,4 +17,18 @@ const postTweet = async (status) => {
   }
 };
 
-module.exports = { postTweet };
+const generateTweetContent = (Book_Name, Author, Year, Category, Description, Image) => {
+  const tweetContent = `📚 New Arrival book!!! 
+      Book: "${Book_Name}" 
+      Author: ${Author} 
+      Year: ${Year} 
+      Category: ${Category} 
+      Description: ${Description} 
+      Image: ${Image}
+  
+      Check it out! #NewBook #${Category}`;
+
+  return tweetContent;
+};
+
+module.exports = { postTweet, generateTweetContent };

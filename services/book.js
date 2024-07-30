@@ -7,6 +7,19 @@ exports.getILSExchangeRate = async () => {
     const data = await response.json();
     return data.rates.ILS;
 };
+exports.updateBook = async (Book_Name, newBookData) => {
+    const bookToUpdate = await Books.findOne({ Book_Name });
+    if (!bookToUpdate) {
+        return new Error('Book not found');
+    } 
+    for (let key in newBookData) {
+        if (newBookData.hasOwnProperty(key)) {
+            bookToUpdate[key] = newBookData[key];
+        }
+    }
+    await bookToUpdate.save();
+    console.log(bookToUpdate);
+}
 
 exports.addBook = async (Book_Name, Author, Year, Quantity, Category, Description, Image, Price) => {
     try {
