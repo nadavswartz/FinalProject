@@ -7,7 +7,7 @@
     padding: 2rem;
     background-color: white;
     border-radius: 0.25rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0.5rem 1rem rgba(87, 79, 204, 0.05);
 }
 
 .content {
@@ -30,4 +30,19 @@
 
 .bold-text {
     font-weight: bold;
+}
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.branchC {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    margin-left: 10%;
+}
+
+.dashboard-chart {
+    margin-left: 10%;
 }

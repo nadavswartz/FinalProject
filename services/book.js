@@ -8,18 +8,21 @@ exports.getILSExchangeRate = async () => {
     return data.rates.ILS;
 };
 exports.updateBook = async (Book_Name, newBookData) => {
-    const bookToUpdate = await Books.findOne({ Book_Name });
-    if (!bookToUpdate) {
-        return new Error('Book not found');
-    } 
-    for (let key in newBookData) {
-        if (newBookData.hasOwnProperty(key)) {
-            bookToUpdate[key] = newBookData[key];
+    try {
+        const bookToUpdate = await Books.findOne({ Book_Name });
+        if (!bookToUpdate) {
+            throw new Error('Book not found');
         }
+        Object.assign(bookToUpdate, newBookData);
+        await bookToUpdate.save();
+        console.log(bookToUpdate);
+        return bookToUpdate;
+    } catch (error) {
+        console.error('Error updating book:', error);
+        throw error;
     }
-    await bookToUpdate.save();
-    console.log(bookToUpdate);
-}
+};
+
 
 exports.addBook = async (Book_Name, Author, Year, Quantity, Category, Description, Image, Price) => {
     try {
@@ -55,7 +58,7 @@ exports.validateFormData = (name, cardNumber, expiryDate, cvv) => {
 exports.deletebook = async (Book_Name) => {
     try {
         const bookToDelete = Books.findOne({Book_Name})
-        await bookToDelete .deleteOne();
+        await bookToDelete.deleteOne();
     } catch (error) {
         console.error('Error delete book:', error);
         throw error;

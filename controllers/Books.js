@@ -164,7 +164,6 @@ exports.processPayment = (req, res) => {
 exports.deleteBook = async (req, res) => {
     try {
         const { Book_Name } = req.body;
-    
         await bookService.deletebook(Book_Name);
         res.redirect('/books/delete');
     } catch (error) {
@@ -174,11 +173,16 @@ exports.deleteBook = async (req, res) => {
 };
 
 exports.updateBook = async (req, res, next) => {
-    try {
+  try {
       const { Book_Name, Author, Year, Quantity, Category, Description, Image, Price } = req.body;
-      const updateBook = await bookService.updateBook(Book_Name, Author, Year, Quantity, Category, Description, Image, Price);
+      const updatedBook = await bookService.updateBook(Book_Name, { Author, Year, Quantity, Category, Description, Image, Price });
+      if (!updatedBook) {
+          res.status(404).send('Book not found');
+          return;
+      }
       res.redirect('/books/update');
-    } catch (error) {
+  } catch (error) {
       next(error);
-    }
-  };
+  }
+};
+

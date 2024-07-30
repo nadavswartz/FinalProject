@@ -19,36 +19,45 @@
                     <p class="bold-text">Welcome back to your dashboard</p>
                     <br>
                     <section class="dashboard-container">
-                        <div class="dashboard-link">
-                            <p class="bold-text">Manage Books</p>
-                            <!-- <p>Click here to manage books.</p> -->
-                            <a href="/books">Click here to manage books</a>
+                        <div class="booksC">
+                            <div class="dashboard-link">
+                                <p class="bold-text">Add Books</p>
+                                <a href="/books">Click here to manage books</a>
+                            </div>
+                            <br>
+                            <div class="dashboard-link">
+                                <p class="bold-text">Delete Books</p>
+                                <a href="/books/delete">Click here to delete books</a>
+                            </div>
+                            <br>
+                            <div class="dashboard-link">
+                                <p class="bold-text">Update Books</p>
+                                <a href="/books/update">Click here to update branch</a>
+                            </div>
                         </div>
-                        <br>
-                        <div class="dashboard-link">
-                            <p class="bold-text">Delete Books</p>
-                            <!-- <p>Click here to delete books.</p> -->
-                            <a href="/books/delete">Click here to delete books</a>
-                        </div>
-                        <br>
-                        <div class="dashboard-link">
-                            <p class="bold-text">Delete Brunch</p>
-                            <!-- <p>Click here to delete brunch.</p> -->
-                            <a href="/brunch/delete">Click here to delete branch</a>
-                        </div>
-                        <br>
-                        <div class="dashboard-link">
-                            <p class="bold-text">Add Brunch</p>
-                            <!-- <p>Click here to add brunch.</p> -->
-                            <a href="/branches/add">Click here to add brunch</a>
+                        <div class="branchC">
+                            <div class="dashboard-link">
+                                <p class="bold-text">Add Brunch</p>
+                                <a href="/branches/add">Click here to add brunch</a>
+                            </div>
+                            <br>
+                            <div class="dashboard-link">
+                                <p class="bold-text">Delete Brunch</p>
+                                <a href="/branches/delete">Click here to delete brunch</a>
+                            </div>
+                            <br>
+                            <div class="dashboard-link">
+                                <p class="bold-text">Update Brunch</p>
+                                <a href="/branches/add">Click here to update brunch</a>
+                            </div>
+                            <br>
                         </div>
                         <br><br>
-                    </section>
-                    <section class="dashboard-chart">
-                        <!-- //charts -->
-                        <p class="bold-text">Client Buys</p>
-                        <div id="clientBuysChart"></div>
-                    </section>
+                        <section class="dashboard-chart">
+                            <!-- //charts -->
+                            <p class="bold-text">Client Buys</p>
+                            <div id="clientBuysChart"></div>
+                        </section>
 
                 </div>
                 <div id="map"></div>

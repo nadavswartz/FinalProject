@@ -21,11 +21,11 @@ const init = async () => {
     app.use(cors());
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
-    
+
     app.use(session({
         secret: process.env.SESSION_SECRET,
         resave: false,
-        saveUninitialized: false,
+        saveUninitialized: true,
       }));
 
     app.use(setUserLocals);

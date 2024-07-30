@@ -22,7 +22,16 @@ router.get('/about', (req, res) => {
 
 
 router.get('/branches/add', isAdmin, branchController.showAddBranchForm);
-router.post('/branches/add', isAdmin, branchController.addBranch);
+router.post('/branches/add',isAdmin, branchController.addBranch);
+
+router.get('/branches/delete',isAdmin, branchController.showDeleteBranchForm);
+router.post('/branches/delete',isAdmin, branchController.deleteBranch);
+
+router.get('/branches/update',isAdmin, (req, res) => {
+  res.render('branchUpdate'); 
+});
+router.post('/branches/update',isAdmin, branchController.updateBranch);
+
 router.get('/api/branches', branchController.getBranches);
 
 router.get('/checkout', (req, res) => {

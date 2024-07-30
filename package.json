@@ -1,4 +1,12 @@
 {
+  "name": "project",
+  "version": "1.0.0",
+  "description": "project",
+  "main": "server.js",
+  "scripts": {
+    "start:dev": "cross-env MODE=dev nodemon server.js",
+    "start:regular": "cross-env MODE=regular nodemon server.js"
+  },
   "dependencies": {
     "all": "^0.0.0",
     "axios": "^1.7.2",
@@ -18,5 +26,8 @@
     "sharp": "^0.33.4",
     "twitter-api-v2": "^1.17.2",
     "twitter-lite": "^1.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
