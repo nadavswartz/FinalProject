@@ -89,6 +89,16 @@ function hideMenuContainer() {
   }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const orderButton = document.getElementById("order");
+  if (orderButton) {
+    orderButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.location.href = "/orders";
+    });
+  }
+});
+
 if (user) {
   user.addEventListener("click", () => {
     setTimeout(showContainer, 300);
