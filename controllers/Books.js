@@ -1,5 +1,6 @@
 const bookService = require('../services/book');
 const Books = require('../models/Books');
+const Order = require('../models/Order'); 
 const { render } = require('ejs');
 const { postTweet, generateTweetContent } = require('../services/twitterService');
 
@@ -144,26 +145,49 @@ exports.addToCart = async (req, res) => {
   
 };
 
-exports.processPayment = (req, res) => {
+exports.processPayment = async (req, res, next) => {
     const { name, cardNumber, expiryDate, cvv } = req.body;
+    const cartItems = req.session.cart || [];
+    const userId = req.session.userId; // Assuming you have user info in session
 
     if (!bookService.validateFormData(name, cardNumber, expiryDate, cvv)) {
         res.status(400).send('Invalid form data');
         return;
     }
-    bookService.processPayment(name, cardNumber, expiryDate, cvv)
-        .then(() => {
-            req.session.destroy((err) => {
-                if (err) {
-                  return next(err); 
-                }
-                res.render('approved');
-              });
-        })
-        .catch(error => {
-            console.error(error);
-            res.status(500).send('Server Error');
-         });    
+
+    try {
+        await bookService.processPayment(name, cardNumber, expiryDate, cvv);
+
+        const order = new Order({
+            Total_Price: cartItems.reduce((total, item) => total + (item.book.Price * item.quantity), 0),
+            User: userId,
+            Order_Books: cartItems.map(item => ({
+                book: item.book._id,
+                quantity: item.quantity
+            }))
+        });
+
+        await order.save();
+
+        req.session.cart = []; // Clear the cart after successful order
+
+        res.render('approved');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+};
+
+exports.renderOrderHistory = async (req, res, next) => {
+    const userId = req.session.userId;
+
+    try {
+        const orders = await Order.find({ User: userId }).populate('Order_Books.book');
+        res.render('orders', { orders });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
 };
 
 exports.deleteBook = async (req, res) => {

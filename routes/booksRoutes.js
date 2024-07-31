@@ -25,6 +25,8 @@ router.get('/books/update',isAdmin, (req, res) => {
 });
 router.post('/books/update',isAdmin, bookController.updateBook);
 
+router.get('/orders', bookController.renderOrderHistory);
+
 
 router.get('/cart', isAuthenticated, bookController.renderCartPage);
 router.post('/cart', isAuthenticated, bookController.addToCart);
