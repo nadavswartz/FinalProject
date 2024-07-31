@@ -3,11 +3,12 @@
 <head>
     <title>Order History</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/order.css">
 </head>
 <body>
     <%- include('header.ejs') %>
-    <div class="container mt-5">
-        <h2>Order History</h2>
+    <div class="order-container">
+        <h2 class="oredr-title">Order History</h2>
         <% orders.forEach(order => { %>
             <div class="card mt-3">
                 <div class="card-body">
