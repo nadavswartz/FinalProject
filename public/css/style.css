@@ -776,6 +776,12 @@ button:active {
   margin-right: 50px;
 }
 
+.order-container {
+  position: absolute;
+  top: 10%;
+  left: 38%;
+}
+
 @keyframes scroll {
   0% { transform: translateX(0); } 
   100% { transform: translateX(-100%); }
