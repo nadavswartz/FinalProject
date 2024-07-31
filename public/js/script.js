@@ -367,7 +367,7 @@ function processPayment() {
   });
 }
 
-// Attach event listener to payment button
+
 const paymentButton = document.getElementById('payment-button');
 if (paymentButton) {
   paymentButton.addEventListener('click', processPayment);
@@ -500,11 +500,11 @@ function renderChartQuantity() {
       .attr("transform", `translate(${margin.left},${margin.top})`);
   
     const y = d3.scaleLinear()
-      .domain([0, d3.max(data, d => d.totalQuantity)]) // Changed here
+      .domain([0, d3.max(data, d => d.totalQuantity)]) 
       .range([height, 0]);
   
     const x = d3.scaleBand()
-      .domain(data.map(d => d._id)) // Changed here
+      .domain(data.map(d => d._id)) 
       .range([0, width])
       .padding(0.1);
   
@@ -513,10 +513,10 @@ function renderChartQuantity() {
       .enter()
       .append("rect")
       .attr("class", "bar")
-      .attr("x", d => x(d._id)) // Changed here
-      .attr("y", d => y(d.totalQuantity)) // Changed here
+      .attr("x", d => x(d._id)) 
+      .attr("y", d => y(d.totalQuantity)) 
       .attr("width", x.bandwidth())
-      .attr("height", d => height - y(d.totalQuantity)); // Changed here
+      .attr("height", d => height - y(d.totalQuantity));
   
     svg.append("g")
       .attr("class", "x-axis")
