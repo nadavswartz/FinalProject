@@ -15,10 +15,10 @@ router.get('/books',isAdmin, (req, res) => {
 });
 router.post('/books',isAdmin, bookController.addBook);
 
-router.get('/books/delete',isAdmin, (req, res) => {
+router.get('/books/delete', isAdmin,(req, res) => {
   res.render('deleteBooks'); 
 });
-router.post('/books/delete',isAdmin, bookController.deleteBook);
+router.post('/books/delete', isAdmin,bookController.deleteBook);
 
 router.get('/books/update',isAdmin, (req, res) => {
   res.render('updateBooks'); 

@@ -148,7 +148,7 @@ exports.addToCart = async (req, res) => {
 exports.processPayment = async (req, res, next) => {
     const { name, cardNumber, expiryDate, cvv } = req.body;
     const cartItems = req.session.cart || [];
-    const userId = req.session.userId; // Assuming you have user info in session
+    const userId = req.session.userId;
 
     if (!bookService.validateFormData(name, cardNumber, expiryDate, cvv)) {
         res.status(400).send('Invalid form data');
@@ -167,9 +167,10 @@ exports.processPayment = async (req, res, next) => {
             }))
         });
 
+        console.log("order ", order);
         await order.save();
 
-        req.session.cart = []; // Clear the cart after successful order
+        req.session.cart = [];
 
         res.render('approved');
     } catch (error) {
@@ -194,7 +195,7 @@ exports.deleteBook = async (req, res) => {
     try {
         const { Book_Name } = req.body;
         await bookService.deletebook(Book_Name);
-        res.redirect('/books/delete');
+        res.redirect('/admin/dashboard');
     } catch (error) {
         console.error(error);
         res.status(500).json({ errors: [error.message] });

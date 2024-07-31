@@ -5,6 +5,7 @@ const express = require('express');
 const session = require('express-session');
 const userRoute = require('./routes/userRoutes');
 const bookRoute = require('./routes/booksRoutes');
+const orderRoute = require('./routes/orderRoutes');
 const cors = require('cors');
 const passport = require('passport');
 const { setUserLocals } = require('./middleware/auth');
@@ -38,6 +39,7 @@ const init = async () => {
     
     app.use(userRoute);
     app.use(bookRoute);
+    app.use(orderRoute);
     
     const port = process.env.PORT || 3000;
     return app.listen(port, () => {

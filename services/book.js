@@ -38,19 +38,23 @@ exports.addBook = async (Book_Name, Author, Year, Quantity, Category, Descriptio
 };
 
 exports.processPayment = async (cartItems) => {
-    console.log(cartItems);
-    for (let item of cartItems) {
-        if (!item.book) {
-            console.error('Item does not have a book property:', item);
-            continue;
+    try {
+        for (let item of cartItems) {
+            if (!item.book) {
+                console.error('Item does not have a book property:', item);
+                continue;
+            }
+            const book = await Books.findById(item.book._id);
+            if (book.Quantity < item.quantity) {
+                console.error('Not enough stock for book:', item.book._id);
+                throw new Error('Not enough stock for book');
+            }
+            book.Quantity -= item.quantity;
+            await book.save();
         }
-        const book = await Books.findById(item.book._id);
-        if (book.Quantity < item.quantity) {
-            console.error('Not enough stock for book:', item.book._id);
-            throw new Error('Not enough stock for book');
-        }
-        book.Quantity -= item.quantity;
-        await book.save();
+    } catch (error) {
+        console.error("Error in processPayment service:", error);
+        throw error;
     }
 };
 

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books Sold Stats</title>
+</head>
+<body>
+    <%- include('header.ejs') %>
+    <br>
+
+    <h1>Books Sold Stats</h1>
+    <div id="books-sold-data" style="display: none;"><%- JSON.stringify(booksSoldStats) %></div>
+    <div id="books-sold-chart"></div>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

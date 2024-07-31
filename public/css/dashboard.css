@@ -41,8 +41,13 @@
     flex-direction: column;
     line-height: 1.5;
     margin-left: 10%;
+    margin-bottom: 2rem; 
 }
 
-.dashboard-chart {
+.chartC {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
     margin-left: 10%;
+    margin-bottom: 2rem; 
 }

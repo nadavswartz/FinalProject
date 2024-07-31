@@ -1,6 +1,4 @@
-// const { response } = require("express");
-
-const container = document.querySelector(".logincontainer"),
+  const container = document.querySelector(".logincontainer"),
   overlay = document.querySelector(".overlay"),
   user = document.getElementById("user"),
   button = document.getElementById("floating-button"),
@@ -332,18 +330,25 @@ function updateSelectionDisplay() {
   }
 }
 // conferm order
-fetch('/process-payment', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    name: name,
-    cardNumber: cardNumber,
-    expiryDate: expiryDate,
-    cvv: cvv,
-  }),
-})
+function processPayment() {
+  
+  const name = document.getElementById('name').value;
+  const cardNumber = document.getElementById('cardNumber').value;
+  const expiryDate = document.getElementById('expiryDate').value;
+  const cvv = document.getElementById('cvv').value;
+
+  fetch('/process-payment', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: name,
+      cardNumber: cardNumber,
+      expiryDate: expiryDate,
+      cvv: cvv,
+    }),
+  })
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -360,3 +365,168 @@ fetch('/process-payment', {
   .catch(error => {
     console.error('There has been a problem with your fetch operation:', error);
   });
+}
+
+// Attach event listener to payment button
+const paymentButton = document.getElementById('payment-button');
+if (paymentButton) {
+  paymentButton.addEventListener('click', processPayment);
+}
+
+// Chart rendering function
+window.onload = function() {
+  renderChart();
+  renderChartIncome();
+  renderChartQuantity()
+};
+
+function renderChart() {
+  const dataElement = document.getElementById('books-sold-data');
+  if (!dataElement) {
+    console.error("books-sold-data element not found");
+    return;
+  }
+
+  try {
+    const data = JSON.parse(dataElement.textContent);
+
+    const margin = { top: 20, right: 30, bottom: 40, left: 240 };
+    const width = 800 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
+
+    const svg = d3.select("#books-sold-chart")
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const x = d3.scaleLinear()
+      .domain([0, d3.max(data, d => d.totalSold)])
+      .range([0, width]);
+
+    const y = d3.scaleBand()
+      .domain(data.map(d => d.bookName))
+      .range([0, height])
+      .padding(0.1);
+
+    svg.selectAll(".bar")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", 0)
+      .attr("y", d => y(d.bookName))
+      .attr("width", d => x(d.totalSold))
+      .attr("height", y.bandwidth());
+
+    svg.append("g")
+      .attr("class", "x-axis")
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(x).tickFormat(d3.format(".0f")));
+
+    svg.append("g")
+      .attr("class", "y-axis")
+      .call(d3.axisLeft(y));
+  } catch (error) {
+    console.error("Error rendering chart:", error);
+  }
+}
+
+function renderChartIncome() {
+  const dataElement = document.getElementById('income-data');
+  try {
+    const data = JSON.parse(dataElement.textContent);
+    console.log(data);
+  
+    const margin = { top: 20, right: 30, bottom: 40, left: 240 };
+    const width = 800 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
+  
+    const svg = d3.select("#income-chart")
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+  
+    const y = d3.scaleLinear()
+      .domain([0, d3.max(data, d => d.totalIncome)])
+      .range([height, 0]);
+  
+    const x = d3.scaleBand()
+      .domain(data.map(d => d.bookName))
+      .range([0, width])
+      .padding(0.1);
+  
+    svg.selectAll(".bar")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", d => x(d.bookName))
+      .attr("y", d => y(d.totalIncome))
+      .attr("width", x.bandwidth())
+      .attr("height", d => height - y(d.totalIncome));
+  
+    svg.append("g")
+      .attr("class", "x-axis")
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(x));
+  
+    svg.append("g")
+      .attr("class", "y-axis")
+      .call(d3.axisLeft(y).tickFormat(d3.format(".0f")));
+  } catch (error) {
+    console.error("Error rendering chart:", error);
+  }
+}
+
+function renderChartQuantity() {
+  const dataElement = document.getElementById('quantity-data');
+  try {
+    const data = JSON.parse(dataElement.textContent);
+    console.log(data);
+  
+    const margin = { top: 20, right: 30, bottom: 40, left: 240 };
+    const width = 800 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
+  
+    const svg = d3.select("#quantity-chart")
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+  
+    const y = d3.scaleLinear()
+      .domain([0, d3.max(data, d => d.totalQuantity)]) // Changed here
+      .range([height, 0]);
+  
+    const x = d3.scaleBand()
+      .domain(data.map(d => d._id)) // Changed here
+      .range([0, width])
+      .padding(0.1);
+  
+    svg.selectAll(".bar")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", d => x(d._id)) // Changed here
+      .attr("y", d => y(d.totalQuantity)) // Changed here
+      .attr("width", x.bandwidth())
+      .attr("height", d => height - y(d.totalQuantity)); // Changed here
+  
+    svg.append("g")
+      .attr("class", "x-axis")
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(x));
+  
+    svg.append("g")
+      .attr("class", "y-axis")
+      .call(d3.axisLeft(y).tickFormat(d3.format(".0f")));
+  } catch (error) {
+    console.error("Error rendering chart:", error);
+  }
+}

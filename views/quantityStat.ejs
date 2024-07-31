@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Total quantity Stats</title>
+</head>
+<body>
+    <%- include('header.ejs') %>
+    <br>
+
+    <h1>Quantity Stats</h1>
+    <div id="quantity-data" style="display: none;"><%- JSON.stringify(quantityStat) %></div>
+    <div id="quantity-chart"></div>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
