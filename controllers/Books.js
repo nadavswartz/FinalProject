@@ -1,6 +1,6 @@
 const bookService = require('../services/book');
 const Books = require('../models/Books');
-const Order = require('../models/Order'); 
+const Order = require('../models/orders'); 
 const { render } = require('ejs');
 const { postTweet, generateTweetContent } = require('../services/twitterService');
 
@@ -156,7 +156,7 @@ exports.processPayment = async (req, res, next) => {
     }
 
     try {
-        await bookService.processPayment(name, cardNumber, expiryDate, cvv);
+        await bookService.processPayment(cartItems);
 
         const order = new Order({
             Total_Price: cartItems.reduce((total, item) => total + (item.book.Price * item.quantity), 0),
@@ -173,7 +173,7 @@ exports.processPayment = async (req, res, next) => {
 
         res.render('approved');
     } catch (error) {
-        console.error(error);
+        console.error("Error processing payment:", error);
         res.status(500).send('Server Error');
     }
 };

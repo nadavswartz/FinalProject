@@ -1,4 +1,5 @@
 const Books = require('../models/Books');
+const Order = require('../models/orders')
 const fetch = require('node-fetch');
 
 
@@ -44,7 +45,11 @@ exports.processPayment = async (cartItems) => {
             continue;
         }
         const book = await Books.findById(item.book._id);
-        Books.Quantity -= item.Quantity;
+        if (book.Quantity < item.quantity) {
+            console.error('Not enough stock for book:', item.book._id);
+            throw new Error('Not enough stock for book');
+        }
+        book.Quantity -= item.quantity;
         await book.save();
     }
 };
