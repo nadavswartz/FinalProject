@@ -44,7 +44,6 @@ exports.renderHomePage = async (req, res) => {
 
         res.render('home', { fantasyBooks, horrorBooks, fictionBooks, romanceBooks });
     } catch (err) {
-        console.error('Error fetching books:', err);
         res.status(500).send('Error fetching books');
     }
 };
@@ -102,9 +101,7 @@ exports.renderAllBooks = async (req, res) => {
 
 exports.renderCartPage = (req, res) => {
     const cartItems = req.session.cart || [];
-    console.log(cartItems)
     const totalPrice = cartItems.reduce((total, item) => total + (item.book.Price * item.quantity), 0);
-    console.log(totalPrice)
     res.render('cart', { cartItems, totalPrice });
 };
 
@@ -126,7 +123,6 @@ exports.addToCart = async (req, res) => {
   
       res.json({ success: true });
     } catch (error) {
-      console.error('Error adding to cart:', error);
       res.status(500).json({ success: false, message: 'Failed to add book to cart' });
     }
   };

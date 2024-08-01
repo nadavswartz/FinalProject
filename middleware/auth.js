@@ -2,23 +2,24 @@ const passport = require('passport');
 
 const isAuthenticated = (req, res, next) => {
   if (req.session && req.session.userId) {
-    console.log('User authenticated:', req.session.userId); // Debugging line
     return next();
   }
   res.redirect('/login');
 };
 
 const isAdmin = (req, res, next) => {
-  // Check if the user is authenticated and has the admin role
-  if (req.session && req.session.userId === '665dc07a683063bb39ecd00c') {
-    console.log('Admin access granted:', req.session.userId); // Debugging line
-    return next();
-  }
-  console.log('Access denied: User details:', req.session.userId); // Debugging line
-  res.status(403).json({ message: 'Access forbidden: Admins only' });
-};
+  try {
+    if (req.session && req.session.userId === '665dc07a683063bb39ecd00c') {
+      return next();
+    }
+    const err = new Error('Sorry, this area is restricted to administrators only');
+    err.status = 404;
+    return next(err);
+  } catch (error) {
+  next(error);
+}
+}
 
-// Passport middleware to authenticate the session
 const passportMiddleware = (req, res, next) => {
   passport.authenticate('session', (err, user) => {
     if (err) return next(err);
@@ -33,4 +34,4 @@ const setUserLocals = (req, res, next) => {
   next();
 };
 
-module.exports = { isAuthenticated, isAdmin, passportMiddleware, setUserLocals  };
+module.exports = { isAuthenticated, isAdmin, passportMiddleware, setUserLocals };

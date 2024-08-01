@@ -11,7 +11,7 @@ const orderSchema = new mongoose.Schema({
         default: Date.now
     },
     User: {
-        type: mongoose.Schema.Types.ObjectId, // Reference to User schema
+        type: mongoose.Schema.Types.ObjectId, 
         required: true,
         ref: 'User'
     },

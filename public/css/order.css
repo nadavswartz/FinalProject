@@ -2,3 +2,13 @@ h2{
     position: relative;
     left: 22%;
   }
+
+  .oredr-title {
+    margin-top: 10% ;
+  }
+
+.order-container {
+  display: flex;
+    flex-direction: column;
+    margin-bottom: 12%;
+}

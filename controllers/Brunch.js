@@ -55,11 +55,11 @@ exports.getBranches = async (req, res, next) => {
 exports.updateBranch = async (req, res, next) => {
   try {
       const  { name, lat, lng } = req.body;
-      console.log(req.body); 
       const updatedBranch = await branchService.updateBranch(name, { lat, lng } );
       if (!updatedBranch) {
-          res.status(404).send('Branch not found');
-          return;
+        const err = new Error('Branch not found');
+        err.status = 400;
+        return next(err);
       }
       res.redirect('/branches/update');
   } catch (error) {

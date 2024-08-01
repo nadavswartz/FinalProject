@@ -1,37 +1,36 @@
 const userService = require('../services/user');
 const User = require('../models/users');
+const {isAdmin} = require('../middleware/auth')
 
-//register function - gets all the values and redirect to /login
+
 exports.register = async (req, res, next) => {
     try {
         const { username, password, email, firstname, lastname, address, city, zipcode, phonenumber, housenumber, floor} = req.body;
         await userService.register(username, password, email, firstname, lastname, address, city, zipcode, phonenumber, housenumber, floor);
-        console.log( `${username} register now`) // for me to see that a user register propartly
         res.redirect('/login');
     } catch (error) {
         next(error);
     }
 };
 
-// use the login function in services and redirect the user to home page
+
 exports.login = async (req, res, next) => {
     try {
-      const { email, password } = req.body;
-      const user = await userService.login(email, password);
-      if (user) {
-        req.session.userId = user._id;
-        req.session.username = user.username; // Store the username in the session
-        console.log(`User ${user.username} logged in, session ID: ${req.session.userId}`);
-        res.redirect('/home');
-      } else {
-        const err = new Error('Invalid email or password');
-        err.status = 401;
-        next(err);
-      }
+        const { email, password } = req.body;
+        const user = await userService.login(email, password);
+        if (user) {
+            req.session.userId = user._id;
+            req.session.username = user.username;
+            res.redirect('/home');
+        } else {
+            const err = new Error('Invalid email or password');
+            err.status = 401;
+            next(err);
+        }
     } catch (error) {
-      next(error);
+        next(error);
     }
-  };
+};
 
 exports.home = async (req, res, next) => {
     try {
@@ -57,7 +56,6 @@ exports.renderAdminDashboard = async (req, res, next) => {
         if (!req.session.userId) {
             return res.redirect('/login');
         }
-        // Fetch data for charts, etc. here
         res.render('adminDashboard');
     } catch (error) {
         next(error);

@@ -16,7 +16,9 @@
                     <p class="card-text">Total Price: $<%= order.Total_Price %></p>
                     <ul>
                         <% order.Order_Books.forEach(item => { %>
-                            <li><%= item.book.Book_Name %> - Quantity: <%= item.quantity %></li>
+                            <% if (item.book) { %>
+                                <li><%= item.book.Book_Name %> - Quantity: <%= item.quantity %></li>
+                            <% } %>
                         <% }) %>
                     </ul>
                 </div>

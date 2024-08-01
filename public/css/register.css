@@ -22,12 +22,12 @@ body {
     margin: 0;
 }
 
-form {
+.registerForm {
     max-width: 400px;
     margin: auto;
     margin-top: 5%;
     margin-bottom: 5%;
-    /* padding: 20px; */
+    padding: 20px; /* Add horizontal and vertical padding */
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -39,7 +39,7 @@ label {
     font-weight: bold;
 }
 
-input {
+.registerForm  input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;

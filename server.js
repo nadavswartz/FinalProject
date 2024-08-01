@@ -47,5 +47,4 @@ const init = async () => {
     });
 };
 
-// starts all
 init();
