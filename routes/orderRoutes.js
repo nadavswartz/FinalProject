@@ -4,8 +4,8 @@ const statsController = require('../controllers/order');
 const path = require('path');
 const { isAdmin } = require('../middleware/auth');
 
-router.get('/books-sold', statsController.getBooksSoldStats);
-router.get('/income', statsController.getIncomeStats);
-router.get('/quantity', statsController.getQuantityStats);
+router.get('/books-sold',isAdmin, statsController.getBooksSoldStats);
+router.get('/income',isAdmin, statsController.getIncomeStats);
+router.get('/quantity',isAdmin, statsController.getQuantityStats);
 
 module.exports = router;
